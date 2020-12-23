@@ -18,14 +18,14 @@ To use the remote map and codecs in Reason, run the [install.sh](install.sh) scr
 This will copy the remote map and codec files over to the appropriate locations on your local file system so that
 Reason can use them.
 
-⚠️ **Please note:** The script only works on macOS. Un Windows, copy the files over manually. Refer to
+⚠️ **Please note:** The script only works on macOS. On Windows, copy the files over manually. Refer to
 the [original post by Gulli on reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) for details.
 
 After successful installation, restart Reason and select the Behringer X-Touch Mini control surface:
 
 * Preferences → Control Surfaces → Add manually → Manufacturer: Behringer → Model: X-Touch Mini
 
-Use the MIDI in and out ports provided by the X-Touch Mini
+Use the MIDI in and out ports provided by the X-Touch Mini.
 
 ![Screenshot: Control surface setup](resources/reason-setup.png)
 
