@@ -1,0 +1,2779 @@
+Propellerhead Remote Mapping File
+File Format Version	1.0.0
+Control Surface Manufacturer	Behringer
+Control Surface Model	X-Touch Mini
+Map Version	1.5.1
+
+
+//<	20110628
+Scope	Propellerheads	Reason Master Section
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	Groups
+
+Define Group	Rotaries	EQ	Ins+Pan	Dyn	Master	FX+Pan	FX Returns
+Define Group	Mode	Select	Multi-Channel	Select1	Select2	Select3	Select4	Select5	Select6	Select7	Select8	Select9	Select10	Select11	Select12	Select13	Select14	Select15	Select16
+Define Group	Flip	Normal	Flipped
+
+
+Map	Frm Left Button		Previous Remote Base Channel
+Map	Frm Right Button		Next Remote Base Channel
+
+//<	20110628
+Scope	Propellerheads	Reason Main Mixer Channel
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	Groups
+
+Define Group	Rotaries	Ins+Pan	FXSends	EQ		Q		Dyn
+Define Group	Display	DeviceName	ParaName
+
+Map	Rotary Button 4		Rotaries=FXSends
+Map	Rotary Button 2		Rotaries=EQ
+Map	Rotary Button 3		Rotaries=Q
+Map	Rotary Button 1		Rotaries=Ins+Pan
+Map	Rotary Button 5		Rotaries=Dyn
+
+
+Map	Rotary 2		Pan			Ins+Pan
+Map	Rotary 1		Width		Spread	Ins+Pan
+Map	Rotary 3		Level			Ins+Pan
+Map	Rotary 4		Rotary 1			Ins+Pan
+Map	Rotary 5		Rotary 2			Ins+Pan
+Map	Rotary 6		Rotary 3			Ins+Pan
+Map	Rotary 7		Rotary 4			Ins+Pan
+
+Map	Button 1		Mute			Ins+Pan
+Map	Button 2		Solo			Ins+Pan
+Map	Button 3		Bypass Insert FX			Ins+Pan
+Map	Button 4		Button 1			Ins+Pan
+Map	Button 5		Button 2			Ins+Pan
+Map	Button 6		Button 3			Ins+Pan
+Map	Button 7		Button 4			Ins+Pan
+
+Map	Rotary Button 8		Filters Dyn S/C			Ins+Pan
+
+
+Map	Rotary 1		FX1 Send Level			FXSends
+Map	Rotary 2		FX2 Send Level			FXSends
+Map	Rotary 3		FX3 Send Level			FXSends
+Map	Rotary 4		FX4 Send Level			FXSends
+Map	Rotary 5		FX5 Send Level			FXSends
+Map	Rotary 6		FX6 Send Level			FXSends
+Map	Rotary 7		FX7 Send Level			FXSends
+Map	Rotary 8		FX8 Send Level			FXSends
+
+Map	Button 1		FX1 Send On			FXSends
+Map	Button 2		FX2 Send On			FXSends
+Map	Button 3		FX3 Send On			FXSends
+Map	Button 4		FX4 Send On			FXSends
+Map	Button 5		FX5 Send On			FXSends
+Map	Button 6		FX6 Send On			FXSends
+Map	Button 7		FX7 Send On			FXSends
+Map	Button 8		FX8 Send On			FXSends
+
+Map	Rotary 1		HPF Frequency			EQ
+Map	Rotary 2		LF Gain		Boost/Cut	EQ	
+Map	Rotary 3		LF Frequency			EQ		
+Map	Rotary 4		LMF Frequency			EQ	
+Map	Rotary 5		LMF Gain		Boost/Cut	EQ	
+Map	Rotary 6		LMF Q			EQ		
+Map	Rotary 7		0	
+Map	Rotary 8		0
+
+Map	Rotary 1		HMF Q			Q
+Map	Rotary 2		HMF Frequency			Q
+Map	Rotary 3		HMF Gain		Boost/Cut	Q	
+Map	Rotary 4		HF Frequency			Q		
+Map	Rotary 5		HF Gain		Boost/Cut	Q	
+Map	Rotary 6		HF Q			Q	
+Map	Rotary 7		LPF Frequency			Q		
+Map	Rotary 8		0			Q	
+
+Map	Button 1		LPF On			EQ
+Map	Button 2		LF Bell			EQ
+Map	Button 7		EQ On			EQ
+Map	Button 8		EQ E Mode			EQ
+
+Map	Button 5		HF Bell			Q
+Map	Button 6		HPF On			Q
+//Map	Button 6    	HPF On			Q
+Map	Button 7		EQ On			Q
+Map	Button 8		EQ E Mode			Q
+
+
+
+Map	Rotary 1		Input Gain			Dyn
+Map	Rotary 2		C Ratio			Dyn
+Map	Rotary 3		C Threshold			Dyn
+Map	Rotary 4		C Release			Dyn
+Map	Rotary 5		G Range			Dyn
+Map	Rotary 6		G Threshold			Dyn
+Map	Rotary 7		G Release			Dyn
+Map	Rotary 8		G Hold			Dyn
+
+Map	Button 1		Invert Phase			Dyn
+Map	Button 2		Comp On			Dyn
+Map	Button 3		C Peak			Dyn
+Map	Button 4		C Fast Atk			Dyn
+Map	Button 5		Key On			Dyn
+Map	Button 6		Gate On			Dyn
+Map	Button 7		G Fast Atk			Dyn
+Map	Button 8		Dyn Post EQ			Dyn
+
+
+//_______________________________________________________________________________________
+
+Scope	Propellerheads	Combinator
+Define Group	Flip	Normal	Flipped
+Define Group	Display	DeviceName	ParaName
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Rotary 1
+Map	Rotary 2		Rotary 2
+Map	Rotary 3		Rotary 3
+Map	Rotary 4		Rotary 4
+Map	Button 1		Button 1
+Map	Button 2		Button 2
+Map	Button 3		Button 3
+Map	Button 4		Button 4
+Map	Button 5		Run Pattern Devices
+Map	Button 6		Select Previous Patch
+Map	Button 7		Select Next Patch
+Map	Button 8		Bypass All FX
+
+// ____________________________________pongasoft ABSwitch_________________
+
+Scope	pongasoft	com.pongasoft.ABSwitch
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		A/B Audio Switch
+Map	Button 1		Soften
+Map	Rotary 2		A/B CV Switch
+
+//______________________________Unfiltered Audio G8 Dynamic Gate____________________________
+
+Scope	Unfiltered Audio	com.unfilteredaudio.G8Gate
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Hysteresis
+Map	Button 2		Lookahead
+Map	Button 3		Flip
+Map	Rotary 1		PreGain
+Map	Rotary 2		Threshold
+Map	Rotary 3		Attack
+Map	Rotary 4		Hold
+Map	Rotary 5		Release
+Map	Rotary 6		Reduction
+Map	Rotary 7		PostGain
+
+//______________________________Unfiltered Audio Yoko Band-Spliter____________________________
+
+Scope	Unfiltered Audio	com.unfilteredaudio.Yoko
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 2		Low Solo
+Map	Button 4		Mid Solo
+Map	Button 6		High Solo
+Map	Rotary 7		Slope Amount
+Map	Rotary 1		Volume
+Map	Rotary 2		Low Gain
+Map	Rotary 3		Low Cutoff
+Map	Rotary 4		Mid Gain
+Map	Rotary 5		High Cutoff
+Map	Rotary 6		High Gain
+
+
+//______________________________ThatMusicCompany T2 Phaser____________________________
+
+Scope	ThatMusicCompany	com.thatmusiccompany.T2Phaser
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+
+Map	Rotary 1		Overdrive Harshness			Normal
+Map	Button 1		Overdrive On / Off			Normal
+Map	Rotary 2		Overdrive Amount			Normal
+Map	Rotary 4		HPF Resonance			Normal
+Map	Button 4		HPF On / Off			Normal
+Map	Rotary 5		HPF Frequency			Normal
+Map	Rotary 7		Dry / Wet			Normal
+Map	Rotary 8		Volume			Normal
+
+
+Map	Rotary 1		Phase Count		Boost/Cut	Flipped
+Map	Rotary 2		Wave Type		Boost/Cut	Flipped
+Map	Rotary 3		Phaser Resonance			Flipped
+Map	Rotary 4		Wave Amount			Flipped
+Map	Rotary 5		Feedback			Flipped
+Map	Rotary 6		Phase			Flipped
+Map	Rotary 7		Rate			Flipped
+Map	Rotary 8		Phaser Pan			Flipped
+Map	Button 6		Manual Control			Flipped
+Map	Button 7		Rate x 2			Flipped
+Map	Button 8		Sync to Tempo			Flipped
+
+
+//______________________________ThatMusicCompany Distort Chain___________________________
+
+Scope	ThatMusicCompany	com.thatmusiccompany.DistortChain
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Flip	FX1	FX2	FX3
+Map	Rotary button 1		Flip=FX3
+Map	Rotary button 2		Flip=Fx2
+Map	Rotary button 3		Flip=FX1
+
+
+Map	Master Fader		Volume
+
+Map	Button 1		FX 1: On Off			FX1
+Map	Button 1		FX 2: On Off			FX2
+Map	Button 1		FX 3: On Off			FX3
+Map	Rotary 1		FX 1: Dry / Wet				FX1
+Map	Rotary 2		FX 1: Parameter 1				FX1
+Map	Rotary 3		FX 1: Parameter 2				FX1
+Map	Rotary 4		FX 1: Effect Selector				FX1
+Map	Rotary 1		FX 2: Dry / Wet				FX2
+Map	Rotary 2		FX 2: Parameter 1				FX2
+Map	Rotary 3		FX 2: Parameter 2				FX2
+Map	Rotary 4		FX 2: Effect Selector				FX2
+Map	Rotary 1		FX 3: Dry / Wet			FX3
+Map	Rotary 2		FX 3: Parameter 1			FX3
+Map	Rotary 3		FX 3: Parameter 2			FX3
+Map	Rotary 4		FX 3: Effect Selector			FX3
+
+//______________________________ThatMusicCompany Mr Over Drive___________________________
+
+Scope	ThatMusicCompany	com.thatmusiccompany.MrOverDrive
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Rotary 1		Overdrive Amount
+Map	Rotary 2		Overdrive Harshness
+Map	Rotary 3		Filter Resonance
+Map	Rotary 4		Filter Frequency
+Map	Rotary 5		Wide Amount
+Map	Rotary 6		Pan		Boost/Cut
+Map	Rotary 7		Dry / Wet
+Map	Rotary 8		Volume
+
+Map	Button 1		Force Mono Input
+Map	Button 2		Double OD Mode
+Map	Button 3		Filter Type
+Map	Button 4		True Filter
+
+//______________________________MSDSP Moo Tube Compressor____________________________
+
+Scope	McDSP	com.mcdsp.MooTube
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Button 1		Key Enable
+Map	Button 2		Key Listen
+Map	Rotary 5		VU Meter Mode
+Map	Rotary 1		Threshold
+Map	Rotary 2		Attack Time
+Map	Rotary 3		Release Time
+Map	Rotary 4		Output Gain
+Map	Rotary 8		Gain Reduction
+
+
+//______________________________McDSP Moo Q Equalizer____________________________
+
+Scope	McDSP	com.mcdsp.MooQ
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Rotary 1		Input Gain
+Map	Rotary 2		Low Freq
+Map	Rotary 3		Low Gain
+Map	Rotary 4		Mid Freq
+Map	Rotary 5		Mid Gain
+Map	Rotary 6		High Freq
+Map	Rotary 7		High Gain
+Map	Rotary 8		Output Gain
+
+//______________________________McDSP C670 Compressor____________________________
+
+Scope	McDSP	com.mcdsp.C670
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Map	Button 1		Key Enable
+Map	Button 2		Key Listen
+Map	Rotary 1		Threshold
+Map	Rotary 2		Time Constant
+Map	Rotary 3		Output Gain
+Map	Button 3		VU Meter Mode
+
+
+//______________________________McDSP E670 Equalizer____________________________
+
+Scope	McDSP	com.mcdsp.E670
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Map	Rotary 1		Input Gain
+Map	Rotary 2		Low Gain
+Map	Rotary 3		Low Freq
+Map	Rotary 4		Mid Gain
+Map	Rotary 5		Mid Freq
+Map	Rotary 6		High Gain
+Map	Rotary 7		High Freq
+Map	Rotary 8		Output Gain
+
+//______________________________McDSP FRG-EEE Equalizer____________________________
+
+Scope	McDSP	com.mcdsp.FREEE
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Map	Fader 1		Input Gain
+Map	Rotary 1		Low Gain
+Map	Rotary 2		Low Freq
+Map	Rotary 3		Low Mid Gain
+Map	Rotary 4		Low Mid Freq
+Map	Rotary 5		High Mid Gain
+Map	Rotary 6		High Mid Freq
+Map	Rotary 7		High Gain
+Map	Rotary 8		High Freq
+Map	Master Fader		Output Gain
+
+
+//______________________________McDSP FRG-4RE Compressor____________________________
+
+Scope	McDSP	com.mcdsp.FRG4re
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Map	Button 1		Key Enable
+Map	Button 2		Key Listen
+Map	Rotary 1		Threshold
+Map	Rotary 2		Compressoion Ratio
+Map	Rotary 3		Attack Time
+Map	Rotary 4		Release Time
+Map	Rotary 5		Output Gain
+Map	Button 3		VU Meter Mode
+//_____________________________Bassment DSP SA16 Chorus____________________________
+
+Scope	Bassment DSP	com.bassmentdsp.SA16Chorus
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+
+Map	Rotary 1		Delay Time
+Map	Rotary 2		WaveType
+Map	Rotary 3		ChorusType
+Map	Rotary 4		Feedback
+Map	Rotary 5		Depth
+Map	Rotary 6		Rate
+Map	Rotary 7		DryWet
+Map	Rotary 8		Volume
+//______________________________DLD Technology	Revolution____________________________
+
+Scope	DLD Technology	com.dldtechnology.revolution
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Map	Rotary 1		Angle
+Map	Rotary 2		Distance
+Map	Rotary 3		Distance Attenuation
+Map	Rotary 4		Zoom
+Map	Rotary 5		Elevation
+Map	Rotary 6		Feedback
+Map	Rotary 7		Dry / Wet
+
+
+
+//______________________________ Reason Studios	Acoustic Guitarist ___________________________
+
+Scope	Propellerhead Software	se.propellerheads.AcousticGuitarist
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Character		Boost/Cut
+Map	Rotary 2		Key		Boost/Cut
+Map	Rotary 3		Style		Boost/Cut
+Map	Rotary 4		Swing		Wrap
+Map	Rotary 5		Feel		Wrap
+Map	Rotary 6		Attack		Wrap
+Map	Rotary 7		Volume		Wrap
+Map	Button 1		Type
+Map	Button 4		Latch
+Map	Button 5		Doubling
+
+//______________________________Devoloop DYNARAGE____________________________
+
+Scope	Devoloop	com.mikegazzaruso.DYNARAGE
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+
+Map	Rotary 1		Sensitivity			Normal
+Map	Rotary 2		Threshold			Normal
+Map	Rotary 3		Ratio			Normal
+Map	Rotary 4		Attack			Normal
+Map	Rotary 5		Release			Normal
+Map	Rotary 6		Volume			Normal
+Map	Rotary 7		DryWet			Normal
+Map	Button 1		LimitOn			Normal
+Map	Button 2		Knee			Normal
+Map	Button 3		KeyIn			Normal
+Map	Button 4		KeyListen			Normal
+Map	Button 1		Rage			Flipped
+Map	Rotary 1		RageTone			Flipped
+Map	Rotary 2		Nurgle			Flipped
+Map	Rotary 3		Korne			Flipped
+
+
+//______________________________ Rob Papen RPSpec ____________________________
+
+Scope	Rob Papen	com.robpapen.RPSpec
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+			
+Map	Button 1		Spectogram Mode
+Map	Button 2		Freeze Spectogram
+
+Map	Rotary 1		Boost			
+Map	Rotary 2		Hold			
+Map	Rotary 3		Release	
+
+//_________________________________Cakewalk RE2A______________________________________________________
+
+//Utilities   Cakewalk RE2A
+Scope	Cakewalk	com.cakewalk.RE2A
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Compress/Limit
+Map	Rotary 1		OutputGain		Wrap
+Map	Rotary 4		MeterSetting		Wrap
+Map	Rotary 3		R37		Wrap
+Map	Rotary 2		PeakReduction		Wrap
+//______________________________fxpansion DCAM Envolute Shaper____________________________
+
+Scope	FXpansion Audio UK Ltd.	com.fxpansion.DCAMEnvShaper
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Button 1		Listen
+Map	Rotary 1		Key Input		Wrap
+Map	Rotary 2		HP Freq		Wrap
+Map	Rotary 3		Attack		Wrap
+Map	Rotary 4		Bias		Wrap
+Map	Rotary 5		Sustain		Wrap
+Map	Rotary 6		Input Gain		Wrap
+Map	Button 3		Saturation
+Map	Rotary 7		Output Gain		Wrap
+Map	Rotary 8		Mix		Wrap
+
+//______________________________ Reasonistas	CORE ___________________________
+
+Scope	Reasonistas	com.reasonistas.CORE
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Global Pan		
+Map	Rotary 2		Gain Left		Wrap
+Map	Rotary 3		Pan Left		Single Dot	
+Map	Rotary 4		Monitor Mode		Wrap
+Map	Rotary 5		Hue		Spread
+Map	Rotary 6		Pan Right		Single Dot, Bipolar
+Map	Rotary 7		Gain Right		Wrap
+Map	Rotary 8		Global Width		Spread		
+
+Map	Button 1		Source Inputs
+Map	Button 2		Phase Invert Left
+Map	Button 4		Gonio Toggle
+Map	Button 5		Meter Mode
+Map	Button 7		Phase Invert Right
+Map	Button 8		Doubling
+
+
+//______________________________fxpansion DCAM Bus COmpresser____________________________
+
+Scope	FXpansion Audio UK Ltd.	com.fxpansion.DCAMBusComp
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Listen
+Map	Rotary 1		HP Freq		Wrap
+Map	Rotary 2		Attack		Wrap
+Map	Rotary 3		Release		Wrap
+Map	Rotary 4		Threshold		Wrap
+Map	Rotary 5		Make Up		Wrap
+Map	Rotary 6		Ratio		Wrap
+Map	Button 7		Saturation
+Map	Rotary 7		Input Gain		Wrap
+Map	Master Fader		Output Gain
+Map	Rotary 8		Mix		Wrap
+
+//______________________________LAB ONE Buttonings ReQ 131____________________________
+
+Scope	LAB ONE Buttonings	co.uk.laboneButtonings.ReQ131
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Group1	Group2	Group3	Group4	Group5
+
+Map	Rotary Button 1		Rotaries=Group1
+Map	Rotary Button 2		Rotaries=Group2
+Map	Rotary Button 3		Rotaries=Group3
+Map	Rotary Button 4		Rotaries=Group4
+Map	Rotary Button 5		Rotaries=Group5
+
+Map	Rotary 1		Gain			Group1
+Map	Rotary 2		Wet/Dry			Group1
+Map	Rotary 3		High Pass			Group1
+Map	Button 1		HP Bypass			Group1
+Map	Rotary 4		Low Pass			Group1
+Map	Button 3		LP Bypass			Group1
+Map	Button 4		Hear EQ			Group1
+Map	Rotary 5		Signal			Group1
+
+
+Map	Rotary 1		EQ1 20Hz			Group2
+Map	Rotary 2		EQ2 25Hz			Group2
+Map	Rotary 3		EQ3 31.5Hz			Group2
+Map	Rotary 4		EQ4 40Hz			Group2
+Map	Rotary 5		EQ5 50Hz			Group2
+Map	Rotary 6		EQ6 63Hz			Group2
+Map	Rotary 7		EQ7 80Hz			Group2
+Map	Rotary 8		EQ8 100Hz			Group2
+Map	Rotary 1		EQ9 125Hz			Group3
+Map	Rotary 2		EQ10 160Hz				Group3
+Map	Rotary 3		EQ11 200Hz				Group3
+Map	Rotary 4		EQ12 250Hz				Group3
+Map	Rotary 5		EQ13 315Hz				Group3
+Map	Rotary 6		EQ14 400Hz				Group3
+Map	Rotary 7		EQ15 500Hz				Group3
+Map	Rotary 8		EQ16 630Hz				Group3
+Map	Rotary 1		EQ17 800Hz				Group4
+Map	Rotary 2		EQ18 1kHz				Group4
+Map	Rotary 3		EQ19 1.25kHz				Group4
+Map	Rotary 4		EQ20 1.6kHz				Group4
+Map	Rotary 5		EQ21 2kHz				Group4
+Map	Rotary 6		EQ22 2.5kHz				Group4
+Map	Rotary 7		EQ23 3.15kHz				Group4
+Map	Rotary 8		EQ24 4kHz				Group4
+Map	Rotary 1		EQ25 5kHz				Group5
+Map	Rotary 2		EQ26 6.3kHz				Group5
+Map	Rotary 3		EQ27 8kHz				Group5
+Map	Rotary 4		EQ28 10kHz				Group5
+Map	Rotary 5		EQ29 12.5kHz				Group5
+Map	Rotary 6		EQ30 16kHz				Group5
+Map	Rotary 7		EQ31 20kHz				Group5
+
+
+//______________________________Audiorealism Abl2____________________________
+
+Scope	Audiorealism	se.audiorealism.reabl2
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Master Fader		Volume
+Map	Button 3		Waveform
+Map	Button 7		Distortion Type
+Map	Button 8		Highpass
+Map	Rotary 1		Drive
+Map	Rotary 2		Distortion
+Map	Rotary 3		Tuning
+Map	Rotary 4		Cutoff
+Map	Rotary 5		Resonance
+Map	Rotary 6		Envmod
+Map	Rotary 7		Decay
+Map	Rotary 8		Accent
+//______________________________IOx Audioware Titan 410x Precision Maximizer____________________________
+
+Scope	IOx Audioware	com.ioxaudioware.titan
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Left Peak Reset
+Map	Button 2		Right Peak Reset
+Map	Button 5		Soft Clip ON/OFF
+
+Map	Rotary 1		Gain
+Map	Rotary 2		Contour
+Map	Rotary 3		Display Input/Output Select
+Map	Rotary 4		Display Refresh Time
+Map	Rotary 5		Soft Clip Amount
+Map	Rotary 6		Output Trim
+
+//______________________ Red Rock Sound	Multi Band Compressor ___________________________
+
+Scope	Red Rock Sound	ru.redrocksound.MBC
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Rotaries	Band1	Band2	Band3	Band4	Band5
+
+Map	Rotary Button 1		Rotaries=Band1
+Map	Rotary Button 2		Rotaries=Band2
+Map	Rotary Button 3		Rotaries=Band3
+Map	Rotary Button 4		Rotaries=Band4
+Map	Rotary Button 5		Rotaries=Band5
+
+Map	Rotary 1		Input Knob			Band5
+Map	Rotary 3		Frequency 1/2			Band5
+Map	Rotary 4		Frequency 2/3			Band5
+Map	Rotary 5		Frequency 3/4			Band5
+Map	Rotary 6		Filter Mode			Band5
+Map	Rotary 8		Output Knob			Band5
+
+Map	Rotary 1		Input Knob			Band1
+Map	Rotary 2		Band 1 Attack			Band1
+Map	Rotary 3		Band 1 Release			Band1
+Map	Rotary 4		Band 1 Knee			Band1
+Map	Rotary 5		Band 1 Threshold			Band1
+Map	Rotary 6		Band 1 Makeup			Band1
+Map	Rotary 8		Output Knob			Band1
+
+Map	Button 1		Band 1 Bypass			Band1
+Map	Button 2		Band 1 Solo			Band1
+Map	Button 8		Band 1 Detection			Band1
+
+Map	Rotary 1		Input Knob			Band2
+Map	Rotary 2		Band 2 Attack			Band2
+Map	Rotary 3		Band 2 Release			Band2
+Map	Rotary 4		Band 2 Knee			Band2
+Map	Rotary 5		Band 2 Threshold			Band2
+Map	Rotary 6		Band 2 Makeup			Band2
+Map	Rotary 8		Output Knob			Band2
+
+Map	Button 1		Band 2 Bypass			Band2
+Map	Button 2		Band 2 Solo			Band2
+Map	Button 8		Band 2 Detection			Band2
+
+Map	Rotary 1		Input Knob			Band3
+Map	Rotary 2		Band 3 Attack			Band3
+Map	Rotary 3		Band 3 Release			Band3
+Map	Rotary 4		Band 3 Knee			Band3
+Map	Rotary 5		Band 3 Threshold			Band3
+Map	Rotary 6		Band 3 Makeup			Band3
+Map	Rotary 8		Output Knob			Band3
+
+Map	Button 1		Band 3 Bypass			Band3
+Map	Button 2		Band 3 Solo			Band3
+Map	Button 8		Band 3 Detection			Band3
+Map	Rotary 1		Input Knob			Band4
+Map	Rotary 2		Band 4 Attack			Band4
+Map	Rotary 3		Band 4 Release			Band4
+Map	Rotary 4		Band 4 Knee			Band4
+Map	Rotary 5		Band 4 Threshold			Band4
+Map	Rotary 6		Band 4 Makeup			Band4
+Map	Rotary 8		Output Knob			Band4
+
+Map	Button 1		Band 4 Bypass			Band4
+Map	Button 2		Band 4 Solo			Band4
+Map	Button 8		Band 4 Detection			Band4
+
+//______________________ Red Rock Sound	Multi Band Limiter ___________________________
+
+Scope	Red Rock Sound	ru.redrocksound.MBL
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Band1	Band2	Band3	Band4
+
+Map	Rotary Button 1		Rotaries=Band1
+Map	Rotary Button 2		Rotaries=Band2
+Map	Rotary Button 3		Rotaries=Band3
+Map	Rotary Button 4		Rotaries=Band4
+
+Map	Rotary 1		Threshold			Band1
+Map	Rotary 2		Ceiling			Band1
+Map	Rotary 3		Input Gain			Band1
+Map	Rotary 4		Lookahead			Band1
+Map	Rotary 5		Master Release			Band1
+Map	Rotary 6		Softening			Band1
+
+
+Map	Button 1		Oversampling			Band1
+Map	Button 2		Clip Mode			Band1
+
+
+Map	Rotary 1		Band 1 Gain			Band2
+Map	Rotary 2		Band 1 Release			Band2
+Map	Rotary 3		Band 1 Priority			Band2
+
+Map	Button 1		Band 1 Solo			Band2
+
+Map	Rotary 5		Band 2 Gain			Band2
+Map	Rotary 6		Band 2 Release			Band2
+Map	Rotary 7		Band 2 Priority			Band2
+
+Map	Button 5		Band 2 Solo			Band2
+
+Map	Rotary 1		Band 3 Gain			Band3
+Map	Rotary 2		Band 3 Release			Band3
+Map	Rotary 3		Band 3 Priority			Band3
+
+Map	Button 1		Band 3 Solo			Band3
+
+Map	Rotary 5		Band 4 Gain			Band3
+Map	Rotary 6		Band 4 Release			Band3
+Map	Rotary 7		Band 4 Priority			Band3
+
+Map	Button 5		Band 4 Solo			Band3
+
+Map	Rotary 1		Crossover Low			Band4
+Map	Rotary 2		Crossover Mid			Band4
+Map	Rotary 3		Crossover High			Band4
+
+Map	Button 1		Crossover Filter Mode 			Band4
+
+
+//______________________________Red Rock Sound C1-Alpha____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.C1A
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+Map	Rotary 1		Input Gain		Wrap	Normal
+Map	Rotary 2		Attack		Wrap	Normal
+Map	Rotary 3		Release		Wrap	Normal
+Map	Rotary 4		Ratio		Wrap	Normal
+Map	Rotary 5		Knee		Wrap	Normal
+Map	Rotary 6		Threshold		Wrap	Normal
+Map	Rotary 7		Makeup		Wrap	Normal
+Map	Rotary 8		Dry/Mix		Wrap	Normal
+
+Map	Rotary 1		VU-Mode Input/GR		Wrap	Flipped
+Map	Rotary 2		Stereo Mode		Boost/Cut	Flipped
+Map	Rotary 3		Limiter Threshold		Wrap	Flipped
+Map	Rotary 4		Mid Scoop		Boost/Cut	Flipped
+
+
+
+//______________________________Red Rock Sound C1L1____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.C1L1
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal	
+
+Map	Button 1		Switch Filter			Normal
+Map	Button 2		Switch Attack Mode			Normal
+Map	Button 3		Switch Input/GR			Normal
+
+Map	Rotary 1		Filter		Wrap	Normal
+Map	Rotary 2		Attack		Wrap	Normal
+Map	Rotary 3		Release		Wrap	Normal
+Map	Rotary 4		Knee		Wrap	Normal
+Map	Rotary 5		Ratio		Wrap	Normal
+Map	Rotary 6		Threshold		Wrap	Normal
+Map	Rotary 7		Makeup		Wrap	Normal
+Map	Rotary 8		Dry/Mix		Wrap	Normal
+
+Map	Rotary 3		Stereo Mode		Boost/Cut	Flipped
+Map	Rotary 1		Limiter Threshold		Wrap	Flipped
+Map	Rotary 2		Mid Scoop		Wrap	Flipped
+//______________________________Red Rock Sound Re 60 Spectrum Analyzer____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.RE60
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Peak Hold
+Map	Button 2		Clear
+Map	Button 3		AVG_Pk
+Map	Button 4		Response
+Map	Button 5		Freeze
+Map	Button 6		Mode
+Map	Rotary 1		Referense
+//______________________________Red Rock Sound Re 202____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.RE202
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+
+Map	Button 5		Ceiling On/Off
+Map	Button 6		Listen On/Off
+Map	Rotary 1		Gain In
+Map	Rotary 2		Drive
+Map	Rotary 3		Timbre
+Map	Rotary 4		Tune
+Map	Rotary 5		Ceiling
+Map	Rotary 6		Mix
+Map	Rotary 7		Gain Out
+//______________________________Red Rock Sound Re 200____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.RE200
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 2		Switch HP Filter
+Map	Button 6		Listen
+Map	Rotary 1		Gain
+Map	Rotary 2		HP Filter
+Map	Rotary 3		Drive
+Map	Rotary 4		Color
+Map	Rotary 5		Scope
+Map	Rotary 6		Add Bass
+Map	Rotary 7		Mix Gain
+
+//______________________________Red Rock Sound Re 302____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.RE302
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Group1	Group2	Group3	Group4
+
+Map	Rotary Button 5		Rotaries=Group1
+Map	Rotary Button 6		Rotaries=Group2
+Map	Rotary Button 7		Rotaries=Group3
+Map	Rotary Button 8		Rotaries=Group4
+
+
+Map	Button 1		scale
+Map	Button 2		HPF
+Map	Master Fader		Gain
+
+Map	Rotary 1		Band1			Group1
+Map	Rotary 2		Band2			Group1
+Map	Rotary 3		Band3			Group1
+Map	Rotary 4		Band4			Group1
+Map	Rotary 5		Band5			Group1
+Map	Rotary 6		Band6			Group1
+Map	Rotary 7		Band7			Group1
+Map	Rotary 8		Band8			Group1
+Map	Rotary 1		Band9				Group2
+Map	Rotary 2		Band10				Group2
+Map	Rotary 3		Band11				Group2
+Map	Rotary 4		Band12				Group2
+Map	Rotary 5		Band13				Group2
+Map	Rotary 6		Band14				Group2
+Map	Rotary 7		Band15				Group2
+Map	Rotary 8		Band16				Group2
+Map	Rotary 1		Band17				Group3
+Map	Rotary 2		Band18				Group3
+Map	Rotary 3		Band19				Group3
+Map	Rotary 4		Band20				Group3
+Map	Rotary 5		Band21				Group3
+Map	Rotary 6		Band22				Group3
+Map	Rotary 7		Band23				Group3
+Map	Rotary 8		Band24				Group3
+Map	Rotary 1		Band25				Group4
+Map	Rotary 2		Band26				Group4
+Map	Rotary 3		Band27				Group4
+Map	Rotary 4		Band28				Group4
+Map	Rotary 5		Band29				Group4
+Map	Rotary 6		Band30				Group4
+Map	Rotary 7		Band31				Group4
+Map	Rotary 8		Band32				Group4 
+
+//______________________________Red Rock Sound. Orchesteral Hall Reverb____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.Reverb
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Rotary 1		Input Gain
+Map	Rotary 2		Program		Boost/Cut
+Map	Rotary 3		Adjust		Boost/Cut
+Map	Rotary 4		Pan		Boost/Cut
+Map	Rotary 5		Dry/Wet
+
+
+
+
+//______________________________Red Rock Sound C1-Sigma____________________________
+
+Scope	Red Rock Sound	ru.redrocksound.C1S
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+Map	Rotary 1		Input Gain		Wrap	Normal
+Map	Rotary 2		Attack		Wrap	Normal
+Map	Rotary 3		Release		Wrap	Normal
+Map	Rotary 4		Ratio		Wrap	Normal
+Map	Rotary 5		Knee		Wrap	Normal
+Map	Rotary 6		Threshold		Wrap	Normal
+Map	Rotary 7		Makeup		Wrap	Normal
+Map	Rotary 8		Dry/Mix		Wrap	Normal
+
+Map	Rotary 1		VU-Mode Input/GR		Wrap	Flipped
+Map	Rotary 2		Stereo Mode		Boost/Cut	Flipped
+Map	Rotary 3		Limiter Threshold		Wrap	Flipped
+Map	Rotary 4		Mid Scoop		Boost/Cut	Flipped
+
+
+
+//______________________________IOx Audioware Onyx Onyx 430i Tube Limiter____________________________
+
+Scope	IOx Audioware	com.ioxaudioware.onyx
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Intersample Limiting ON/OFF
+Map	Button 2		Stereo Link
+Map	Button 3		Display Switch
+
+Map	Rotary 1		Gain
+Map	Rotary 2		Threshold
+Map	Rotary 3		Bias
+Map	Rotary 4		Character
+Map	Rotary 5		Recovery
+Map	Rotary 6		Margin
+
+
+
+//______________________________Audiorealism ReDominator____________________________
+
+Scope	Audiorealism	se.audiorealism.Dominator
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Main	Main2	DCO	VCF	Pitch
+
+Map	Rotary Button 1		Rotaries=Main
+Map	Rotary Button 2		Rotaries=Main2
+Map	Rotary Button 3		Rotaries=DCO
+Map	Rotary Button 4		Rotaries=VCF
+Map	Rotary Button 5		Rotaries=Pitch
+
+Map	Rotary 1		LFO Rate			Main
+Map	Rotary 2		LFO Delay			Main
+
+Map	Button 8		Chorus Enabled			Main
+Map	Rotary 8		Chorus Rate			Main
+Map	Master Fader		Volume
+
+Map	Rotary 1		ENV T1			Main2
+Map	Rotary 2		ENV L1			Main2
+Map	Rotary 3		ENV T2			Main2
+Map	Rotary 4		ENV L2			Main2
+Map	Rotary 5		ENV T3			Main2
+Map	Rotary 6		ENV L3			Main2
+Map	Rotary 7		ENV T4			Main2
+Map	Rotary 8		ENV Key Follow			Main2
+
+Map	Rotary 1		DCO Pulse			DCO
+Map	Rotary 2		DCO Saw			DCO
+Map	Rotary 3		DCO Sub			DCO
+Map	Rotary 4		DCO Sub Level			DCO
+Map	Rotary 5		DCO Noise Level			DCO
+Map	Rotary 6		DCO PWM			DCO
+Map	Rotary 7		DCO PWM Rate			DCO
+
+Map	Rotary 1		VCF HPF			VCF
+Map	Rotary 2		VCF Frequency			VCF
+Map	Rotary 3		VCF Resonance			VCF
+Map	Rotary 4		VCF Env Mode			VCF
+Map	Rotary 5		VCF Env Amount			VCF
+Map	Rotary 6		VCF LFO Amount			VCF
+Map	Rotary 7		VCF Key Follow			VCF
+Map	Rotary 8		VCA Level			VCF
+Map	Rotary 8		VCA Env			DCO
+
+
+//Map	_control_	VCF Env			Pitch
+Map	Rotary 1		DCO Range			Pitch
+Map	Rotary 2		DCO Env Mode			Pitch
+Map	Button 1		Polyphony On			Pitch
+Map	Button 2		Portamento Mode			Pitch
+Map	Rotary 3		DCO Env Depth			Pitch
+Map	Rotary 4		DCO LFO Amount			Pitch
+Map	Rotary 5		Bender Range			Pitch
+Map	Rotary 6		Portamento Time			Pitch
+
+//===================================== Reason Studio  ==============================================
+//===================================== Reason Studio  ==============================================
+
+//______________________________ Reason Studio Radical Piano ____________________________
+
+Scope	Propellerhead Software	se.propellerheads.radicalpiano
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Rotaries	Main	Group1	Group2
+
+Map	Rotary Button 1		Rotaries=Main
+Map	Rotary Button 2		Rotaries=Group1
+Map	Rotary Button 3		Rotaries=Group2
+
+Map	Master Fader		Master Volume
+
+Map	Rotary 1		Character			Main
+Map	Rotary 2		Microphone 1 Type			Main
+Map	Rotary 3		Microphone and Instrument Blend			Main
+Map	Rotary 4		Microphone 2 Type			Main
+Map	Rotary 5		Vel Response High			Main
+Map	Rotary 6		Vel Response Low			Main
+Map	Rotary 7		Vel Response Curve			Main
+Map	Button 1		Sustain Pedal			Main
+
+
+Map	Rotary 1		TUNE			Group1
+Map	Rotary 2		Tune Drift			Group1
+Map	Fader 1		Sustain Pedal			Group1
+Map	Rotary 3		Symp Res Level			Group1
+Map	Rotary 4		Symp Res Release Time			Group1
+Map	Rotary 5		Env Attack			Group1
+Map	Rotary 6		Env Decay Curve			Group1
+Map	Rotary 7		Env Release			Group1
+Map	Button 8		Ambience Type			Group1
+Map	Rotary 8		Ambience Level			Group1
+
+
+Map	Rotary 1		Key Down Level			Group2
+Map	Rotary 2		Key Up Level			Group2
+Map	Rotary 3		Pedal Level			Group2
+Map	Button 4		EQ On/Off			Group2
+Map	Rotary 4		EQ Hi Gain			Group2
+Map	Rotary 5		EQ Mid Gain			Group2
+Map	Rotary 6		EQ Lo Gain			Group2
+Map	Rotary 7		Compression Amount			Group2
+Map	Rotary 8		Stereo Width			Group2
+Map	Button 1		Sustain Pedal			Group2
+
+
+//______________________________ Reason Studio	Polar ___________________________
+
+Scope	Propellerhead Software	se.propellerheads.Polar
+//Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Main	Group1	Group2
+Define Group	Flip	Normal	Flipped
+
+Map	Rotary Button 7		Flip=Flipped
+Map	Rotary Button 8		Flip=Normal
+
+Map	Rotary Button 1		Rotaries=Main
+Map	Rotary Button 2		Rotaries=Group1
+Map	Rotary Button 3		Rotaries=Group2            
+                     
+
+Map	Button 1		Analysis Type			Main	Normal
+Map	Button 2		Algorithm Type			Main	Normal
+Map	Rotary 1		Loop Length			Main	Normal
+Map	Button 3		Keyboard Input Enable			Main	Normal
+Map	Rotary 2		Auto Pan Rate		Boost/Cut			Main	Normal
+Map	Button 4		Dry Enable			Main	Flipped
+Map	Rotary 4		Dry Delay			Main	Flipped
+Map	Rotary 5		Dry Pan		Boost/Cut			Main	Flipped
+Map	Rotary 6		Dry Auto Pan Amount		Boost/Cut			Main	Flipped
+Map	Rotary 7		Dry Level			Main	Flipped
+
+Map	Button 4		Lock Buffer			Main	Normal
+Map	Rotary 4		Delay/Buffer Position			Main	Normal
+Map	Button 5		Delay/Buffer Delay Mode			Main	Normal
+Map	Button 6		Input Summing Left + Right			Main	Normal
+Map	Rotary 5		Buffer LFO Amount			Main	Normal
+Map	Rotary 6		Buffer Env Amount			Main	Normal
+
+
+Map	Rotary 1		Shifter 1 Semi			Group1	Normal
+Map	Rotary 2		Shifter 1 Fine			Group1	Normal
+Map	Rotary 3		Shifter 1 Feedback			Group1	Normal
+Map	Rotary 4		Shifter 1 LFO Amount			Group1	Normal
+Map	Rotary 5		Shifter 1 Env Amount			Group1	Normal
+Map	Rotary 6		Shifter 1 Pan		Boost/Cut			Group1	Normal
+Map	Rotary 7		Shifter 1 Auto Pan		Boost/Cut			Group1	Normal
+Map	Master Fader		Shifter 1 Level			Group1	Normal
+
+Map	Button 1		Shifter 2 Enable			Group1	Flipped
+Map	Rotary 1		Shifter 2 Semi			Group1	Flipped
+Map	Rotary 2		Shifter 2 Fine			Group1	Flipped
+Map	Rotary 3		Shifter 2 Feedback			Group1	Flipped
+Map	Rotary 4		Shifter 2 Delay			Group1	Flipped
+Map	Rotary 5		Shifter 2 LFO Amount			Group1	Flipped
+Map	Rotary 6		Shifter 2 Env Amount			Group1	Flipped
+Map	Rotary 7		Shifter 2 Pan		Boost/Cut			Group1	Flipped
+Map	Rotary 8		Shifter 2 Auto Pan		Boost/Cut			Group1	Flipped
+Map	Master Fader		Shifter 2 Level			Group1	Flipped
+
+
+Map	Button 1		Envelope Gate			Group2	Normal
+Map	Rotary 1		Envelope Attack			Group2	Normal
+Map	Rotary 2		Envelope Decay			Group2	Normal
+Map	Rotary 3		Envelope Sustain			Group2	Normal
+Map	Rotary 4		Envelope Release			Group2	Normal
+Map	Button 2		Env To Amp			Group2	Normal
+
+
+Map	Rotary 6		LFO Rate Free			Group2	Normal
+Map	Rotary 7		LFO Phase			Group2	Normal
+Map	Rotary 8		LFO Waveform			Group2	Normal
+Map	Button 8		LFO Tempo Sync			Group2	Normal
+
+Map	Button 1		Filter Enable			Group2	Flipped
+Map	Rotary 1		Filter Frequency			Group2	Flipped
+Map	Rotary 2		Filter Resonance			Group2	Flipped
+Map	Rotary 3		Filter Keyboard Tracking			Group2	Flipped
+Map	Button 2		Filter Type			Group2	Flipped
+Map	Rotary 4		Filter LFO Amount			Group2	Flipped
+Map	Rotary 5		Filter Env Amount			Group2	Flipped
+
+
+//______________________________ Reason Studio Scream 4 Distortion	___________________________
+
+Scope	Propellerheads	Scream 4 Distortion
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+   Define Group	Rotaries	Comp	Gate
+
+Map	Rotary Button 1		Rotaries=Comp
+Map	Rotary Button 2		Rotaries=Gate
+                           
+Map	Rotary 1		Damage Control			Comp                 
+Map	Rotary 2		Damage Type  			Comp                  
+Map	Rotary 3		Parameter 1			Comp                    
+Map	Rotary 4		Parameter 2			Comp                          
+Map	Button 5		Body On/Off			Comp                    
+Map	Rotary 5		Body Resonance			Comp                 
+Map	Rotary 6		Body Scale			Comp                     
+Map	Rotary 7		Body Auto			Comp                      
+Map	Rotary 8		Body Type			Comp                     
+Map	Rotary 7		Input Peak Meter		Wrap			Gate                      
+Map	Rotary 8		Master Level			Gate  
+
+
+Map	Button 1		Damage On/Off			Comp                    
+Map	Button 2		Cut On/Off			Comp                   
+Map	Rotary 1		Cut Lo			Gate                         
+Map	Rotary 2		Cut Mid			Gate                        
+Map	Rotary 3		Cut Hi			Gate  
+
+//_________________________________ Reason Studio Channel Dynamics ______________________________________________________
+
+Scope	Propellerhead Software	se.propellerheads.ChannelDynamics
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Rotaries	Comp	Gate
+
+Map	Rotary Button 1		Rotaries=Comp
+Map	Rotary Button 2		Rotaries=Gate
+
+Map	Button 1		Comp On			Comp
+Map	Button 3		Comp Fast On			Comp
+Map	Button 2		Comp Peak On			Comp
+
+Map	Button 1		Gate On			Gate
+Map	Button 3		Gate Fast On			Gate
+Map	Button 2		Gate Exp On			Gate
+Map	Button 8		Sidechain			Gate
+
+Map	Rotary 1		Input Gain			Comp
+Map	Rotary 2		Comp Ratio			Comp
+Map	Rotary 3		Comp Release			Comp
+Map	Rotary 4		Comp Threshold			Comp
+Map	Rotary 8		Comp Meter		Wrap			Comp
+
+Map	Rotary 1		Input Gain			Gate
+Map	Rotary 2		Gate Hold			Gate
+Map	Rotary 3		Gate Range			Gate
+Map	Rotary 4		Gate Release			Gate
+Map	Rotary 5		Gate Threshold			Gate
+
+
+
+
+//_________________________________ Reason Studio Channel EQ ______________________________________________________
+
+Scope	Propellerhead Software	se.propellerheads.ChannelEQ
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Define Group	Rotaries	LowEQ	HighEQ
+
+Map	Rotary Button 1		Rotaries=LowEQ
+Map	Rotary Button 2		Rotaries=HighEQ
+
+
+Map	Button 1		HPF On			LowEQ
+Map	Button 2		LPF On			LowEQ
+Map	Button 3		LF Bell On			LowEQ
+Map	Button 5		E Mode On
+
+Map	Rotary 1		HPF Frequency				LowEQ
+Map	Rotary 2		LPF Frequency			LowEQ
+Map	Rotary 3		LF Frequency			LowEQ
+Map	Rotary 4		LF Gain			LowEQ
+Map	Rotary 5		LMF Q			LowEQ
+Map	Rotary 8		Gain			LowEQ
+
+Map	Button 4		HF Bell On			HighEQ
+
+Map	Rotary 1		HMF Frequency			HighEQ
+Map	Rotary 2		HMF Gain			HighEQ
+Map	Rotary 3		HMF Q			HighEQ
+Map	Rotary 4		HF Frequency			HighEQ
+Map	Rotary 5		HF Gain			HighEQ
+Map	Rotary 8		Gain			HighEQ
+
+//_________________________________ Reason Studio Master Compressor ______________________________________________________
+
+Scope	Propellerhead Software	se.propellerheads.MasterCompressor
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Sidechain
+
+Map	Rotary 1		Input Gain
+Map	Rotary 2		Ratio
+Map	Rotary 3		Threshold
+Map	Rotary 4		Attack
+Map	Rotary 5		Release
+Map	Rotary 6		Make-Up Gain
+Map	Rotary 7		Comp Meter		Wrap
+Map	Rotary 8		Mix
+
+//______________________________ Reason Studio  A List Studio Drummer____________________________
+
+Scope	Propellerhead Software	se.propellerheads.AListDrummer
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Define Group	Rotaries	Main	Group1	Group2	
+
+Map	Rotary Button 1		Rotaries=Main
+Map	Rotary Button 2		Rotaries=Group1
+		
+Map	Rotary 1		HiHat			Main			
+Map	Rotary 2		Ride			Main			
+Map	Rotary 3		Crashes			Main
+Map	Rotary 4		Kick			Main
+Map	Rotary 5		Snare			Main
+Map	Rotary 6		Toms			Main
+Map	Rotary 7		Overhead			Main
+Map	Rotary 8		Room			Main
+Map	Button 1		Kit
+Map	Button 6		Speed
+Map	Button 7		Hold
+Map	Button 8		Mix
+
+Map	Master Fader 		Volume	
+
+Map	Rotary 1		Swing			Group1			
+Map	Rotary 2		Feel			Group1			
+Map	Rotary 3		Quantize			Group1
+Map	Rotary 4		Slam			Group1
+Map	Rotary 5		Amount			Group1
+Map	Rotary 6		Reverb			Group1
+Map	Rotary 7		Style			Group1
+Map	Rotary 8		0			Group1	
+
+//______________________________ Reason Studio Audiomatic ____________________________
+
+Scope	Propellerhead Software	se.propellerheads.Audiomatic
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Ultra Lo                     
+Map	Button 5		Ultra Hi
+Map	Button 2		Amp Switch
+Map	Button 3		Cab Switch 
+		
+Map	Rotary 1		Input Gain                  
+Map	Rotary 2		Input Peak Meter		Wrap                    
+Map	Rotary 4		Preset                     
+Map	Rotary 6		Transform
+Map	Rotary 7		Dry Wet 
+Map	Rotary 8		Volume  
+                  
+//______________________________ Reason Studio	RV7000 Advanced Reverb___________________________
+
+Scope	Propellerheads	RV7000 Advanced Reverb				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 2		Flip=Flipped
+Map	Rotary button 1		Flip=Normal
+
+		
+Map	Rotary 4		Dry/Wet			
+Map	Rotary 1		Decay			Normal		
+Map	Rotary 2		HF Damp			Normal
+Map	Rotary 3		Hi EQ			Normal
+Map	Button 1		Gate On/Off			Normal
+Map	Button 2		EQ On/Off			Normal
+
+Map	Button 1		Edit Mode			Flipped			
+Map	Rotary 1		Soft Knob 1			Flipped	
+Map	Rotary 2		Soft Knob 2			Flipped
+Map	Rotary 3		Soft Knob 3			Flipped
+Map	Rotary 4		Soft Knob 4			Flipped
+Map	Rotary 5		Soft Knob 5			Flipped
+Map	Rotary 6		Soft Knob 6			Flipped
+Map	Rotary 7		Soft Knob 7			Flipped
+Map	Rotary 8		Soft Knob 8			Flipped
+
+//______________________________Propellerheads	MClass Equalizer___________________________
+
+Scope	Propellerheads	MClass Equalizer				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+				
+Define Group	Rotaries	FRQ	Gain
+
+Map	Rotary Button 1		Rotaries=FRQ
+Map	Rotary Button 2		Rotaries=Gain
+
+Map	Rotary 2		Low Shelf Gain			FRQ	
+Map	Rotary 4		Parametric 1 Gain			FRQ
+Map	Rotary 6		Parametric 2 Gain			FRQ
+Map	Rotary 8		Hi Shelf Gain			FRQ
+		
+Map	Button 1		Low Cut Enable			FRQ			
+Map	Button 2		Low Shelf Enable			FRQ
+Map	Button 3		Parametric 1 Enable			FRQ
+Map	Button 4		Parametric 2 Enable			FRQ
+Map	Button 5		Hi Shelf Enable			FRQ
+
+			
+Map	Rotary 1		Low Shelf Frequency			FRQ	
+Map	Rotary 1		Low Shelf Q			Gain	
+Map	Rotary 3		Parametric 1 Frequency			FRQ	
+Map	Rotary 2		Parametric 1 Q			Gain	
+Map	Rotary 5		Parametric 2 Frequency			FRQ	
+Map	Rotary 3		Parametric 2 Q			Gain	
+Map	Rotary 7		Hi Shelf Frequency			FRQ
+Map	Rotary 4		Hi Shelf Q			Gain 
+ 
+//______________________________Propellerheads	MClass Compressr___________________________
+				
+Scope	Propellerheads	MClass Compressor				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+		
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 1		Input Gain                             
+Map	Rotary 2		Threshold
+Map	Button 2		Soft Knee			
+Map	Rotary 3		Ratio
+Map	Button 4		Sidechain Solo			
+Map	Rotary 4		Attack
+Map	Rotary 5		Release
+Map	Button 5		Adapt			
+Map	Rotary 6		Output Gain
+Map	Rotary 7		Gain Meter		Single Dot, Bipolar	
+
+
+//______________________________Propellerheads	MClass Maximizer__________________________
+Scope	Propellerheads	MClass Maximizer				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 1		Input Gain
+Map	Button 1		Limiter Enable			
+Map	Button 2		Look Ahead Enable			
+Map	Rotary 2		Attack Speed			
+Map	Rotary 3		Release Speed			
+Map	Rotary 4		Output Gain
+Map	Button 3		Soft Clip Enable			
+Map	Rotary 5		Soft Clip Amount			
+Map	Button 5		Output Level Meter Mode			
+Map	Rotary 7		Gain Meter		Single Dot, Bipolar
+
+
+//______________________________Propellerheads	MClass Stereo Imager__________________________
+Scope	Propellerheads	MClass Stereo Imager				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 1		Low Width		Spread			
+Map	Rotary 2		X-Over Frequency
+Map	Rotary 3		High Width		Spread			
+Map	Rotary 4		Solo Mode			
+Map	Button 4		Separate Out Mode			
+Map	Rotary 6		Low Width Meter		Spread			
+Map	Rotary 7		High Width Meter		Spread	
+
+
+//________________________________ Reason Studio Pulsar _____________________					
+Scope	Propellerhead Software	se.propellerheads.Pulsar
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Rotaries	Main	Band1	Band2
+
+
+Map	Rotary Button 1		Rotaries=Main
+Map	Rotary Button 2		Rotaries=Band1
+Map	Rotary Button 3		Rotaries=Band2
+
+Map	Button 1		LFO1 Tempo Sync			Main
+Map	Button 2		LFO1 Env Sync			Main
+Map	Button 3		Sync LFO1 to LFO2			Main
+
+Map	Rotary 8		LFO1 Rate Free			Main
+Map	Rotary 1		LFO1 Rate Synced			Main
+Map	Rotary 2		LFO1 Waveform			Main
+Map	Rotary 3		LFO1 Level			Main
+Map	Rotary 5		LFO1 Shuffle			Main
+Map	Rotary 4		LFO1 Phase			Main
+Map	Rotary 6		LFO1 Lag			Main
+Map	Rotary 7		Keyboard Track			Main
+
+Map	Button 1		LFO2 Tempo Sync			Band1
+Map	Button 2		LFO2 Enabled			Band1
+Map	Button 3		Trig			Band1
+Map	Button 4		LFO2 Triggers Envelope			Band1
+
+Map	Rotary 2		LFO2 Waveform			Band1
+Map	Rotary 8		LFO2 Rate Free			Band1
+Map	Rotary 1		LFO2 Rate Synced			Band1
+Map	Rotary 3		LFO2 Level			Band1
+Map	Rotary 4		LFO2 Shuffle			Band1
+Map	Rotary 5		LFO2 Phase			Band1
+Map	Rotary 6		LFO2 Lag			Band1
+
+Map	Rotary 1		LFO2 to LFO1 Rate			Band2
+Map	Rotary 2		LFO2 to LFO1 Level			Band2
+Map	Rotary 3		Attack			Band2
+Map	Rotary 4		Release			Band2
+Map	Rotary 5		LFO1 Env Level			Band2
+Map	Rotary 6		LFO1 Env Rate			Band2
+Map	Rotary 8		LFO2 Env Level			Band2
+Map	Rotary 7		LFO2 Env Rate			Band2
+
+
+//________________________________ Reason Studio Line Mixer 6:2 _____________________					
+
+Scope	Propellerheads	Line Mixer 6:2
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Rotaries	Chan1	Chan2	Chan3	Chan4	Chan5	Chan6
+
+Map	Rotary Button 1		Rotaries=Chan1
+Map	Rotary Button 2		Rotaries=Chan2
+Map	Rotary Button 3		Rotaries=Chan3
+Map	Rotary Button 4		Rotaries=Chan4
+Map	Rotary Button 5		Rotaries=Chan5
+Map	Rotary Button 6		Rotaries=Chan6
+
+Map	Button 2		Channel 1 Solo			Chan1
+Map	Button 1		Channel 1 Mute			Chan1
+Map	Button 7		Aux Pre/Poste			Chan1
+
+Map	Rotary 1		Channel 1 Level		Wrap			Chan1
+Map	Rotary 2		Channel 1 Pan			Chan1
+Map	Rotary 3		Channel 1 Peak Meter		Wrap			Chan1
+Map	Rotary 4		Channel 1 Aux Send			Chan1
+Map	Rotary 7		Aux Return Level			Chan1
+Map	Rotary 8		Master Level			Chan1
+
+Map	Button 2		Channel 2 Solo			Chan2
+Map	Button 1		Channel 2 Mute			Chan2
+Map	Button 7		Aux Pre/Poste			Chan2
+
+Map	Rotary 1		Channel 2 Level		Wrap			Chan2
+Map	Rotary 2		Channel 2 Pan			Chan2
+Map	Rotary 3		Channel 2 Peak Meter		Wrap			Chan2
+Map	Rotary 4		Channel 2 Aux Send			Chan2
+Map	Rotary 7		Aux Return Level			Chan2
+Map	Rotary 8		Master Level			Chan2
+
+Map	Button 2		Channel 3 Solo			Chan3
+Map	Button 1		Channel 3 Mute			Chan3
+Map	Button 7		Aux Pre/Poste			Chan3
+
+Map	Rotary 1		Channel 3 Level		Wrap			Chan3
+Map	Rotary 2		Channel 3 Pan			Chan3
+Map	Rotary 3		Channel 3 Peak Meter		Wrap			Chan3
+Map	Rotary 4		Channel 3 Aux Send			Chan3
+Map	Rotary 7		Aux Return Level			Chan3
+Map	Rotary 8		Master Level			Chan3
+
+
+Map	Button 2		Channel 4 Solo			Chan4
+Map	Button 1		Channel 4 Mute			Chan4
+Map	Button 7		Aux Pre/Poste			Chan4
+
+Map	Rotary 1		Channel 4 Level		Wrap			Chan4
+Map	Rotary 2		Channel 4 Pan			Chan4
+Map	Rotary 3		Channel 4 Peak Meter		Wrap			Chan4
+Map	Rotary 4		Channel 4 Aux Send			Chan4
+Map	Rotary 7		Aux Return Level			Chan4
+Map	Rotary 8		Master Level			Chan4
+
+
+Map	Button 2		Channel 5 Solo			Chan5
+Map	Button 1		Channel 5 Mute			Chan5
+Map	Button 7		Aux Pre/Poste			Chan5
+
+Map	Rotary 1		Channel 5 Level		Wrap			Chan5
+Map	Rotary 2		Channel 5 Pan			Chan5
+Map	Rotary 3		Channel 5 Peak Meter		Wrap			Chan5
+Map	Rotary 4		Channel 5 Aux Send			Chan5
+Map	Rotary 7		Aux Return Level			Chan5
+Map	Rotary 8		Master Level			Chan5
+
+
+Map	Button 2		Channel 6 Solo			Chan6
+Map	Button 1		Channel 6 Mute			Chan6
+Map	Button 7		Aux Pre/Poste			Chan6
+
+Map	Rotary 1		Channel 6 Level		Wrap			Chan6
+Map	Rotary 2		Channel 6 Pan			Chan6
+Map	Rotary 3		Channel 6 Peak Meter		Wrap			Chan6
+Map	Rotary 4		Channel 6 Aux Send			Chan6
+Map	Rotary 7		Aux Return Level			Chan6
+Map	Rotary 8		Master Level			Chan6
+
+
+
+
+//______________________________Propellerheads	RV-7 Digital Reverb__________________________
+Scope	Propellerheads	RV-7 Digital Reverb				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 2		Size			
+Map	Rotary 3		Decay			
+Map	Rotary 4		Damping			
+Map	Rotary 5		Dry/Wet			
+Map	Rotary 1		Algorithm
+
+//______________________________Propellerheads	DDL-1 Digital Delay Line__________________________					
+Scope	Propellerheads	DDL-1 Digital Delay Line				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Button 1		Unit			
+Map	Button 2		Step Length			
+Map	Rotary 1 		DelayTime (steps)			
+Map	Rotary 3		Feedback			
+Map	Rotary 4		Pan			
+Map	Rotary 5		Dry/Wet Balance			
+Map	Rotary 2		DelayTime (ms)		
+
+//______________________________Propellerheads	D-11 Foldback Distortion__________________________					
+Scope	Propellerheads	D-11 Foldback Distortion				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+		
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 1		Amount			
+Map	Rotary 2		Foldback	
+
+//______________________________Propellerheads	ECF-42 Envelope Controlled Filter__________________________					
+Scope	Propellerheads	ECF-42 Envelope Controlled Filter			
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+		
+Map	Rotary 5		Attack			
+Map	Rotary 6		Decay			
+Map	Rotary 7		Sustain			
+Map	Rotary 8		Release			
+Map	Rotary 1		Frequency			
+Map	Rotary 2		Resonance			
+Map	Rotary 3		Env Amount			
+Map	Rotary 4		Velocity			
+Map	Button 1		Mode			
+Map	Button 2		Trigger				
+
+
+//______________________________Propellerheads	CF-101 Chorus/Flanger__________________________					
+Scope	Propellerheads	CF-101 Chorus/Flanger				
+//	Control Sufrace Item	Key	Remotable Item	Scale	Mode	
+		
+Map	Rotary 1		Delay			
+Map	Rotary 2		Feedback			
+Map	Rotary 3		Rate			
+Map	Rotary 4		Modulation Amount			
+Map	Button 1		Send/Insert Mode			
+Map	Button 2		LFO Sync Enable			
+Map	Rotary 8 		Peak Meter		Wrap			
+					
+//______________________________Propellerheads	PH-90 Phaser__________________________					
+Scope	Propellerheads	PH-90 Phaser				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 1		Frequency			
+Map	Rotary 2		Split			
+Map	Rotary 3		Width			
+Map	Rotary 4		Rate			
+Map	Rotary 5		Frequency Modulation			
+Map	Rotary 6		Feedback			
+Map	Button 5		LFO Sync Enable			
+					
+
+//______________________________Propellerheads	UN-16 Unison__________________________					
+Scope	Propellerheads	UN-16 Unison				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Button 1		Voice Count			
+Map	Rotary 1		Detune			
+Map	Rotary 2		Dry/Wet			
+
+//______________________________Propellerheads	COMP-01 Compressor/Limiter__________________________					
+Scope	Propellerheads	COMP-01 Compressor/Limiter				
+//	Control Sufrace Item	Key	Remotable Item	Scale	Mode	
+			
+Map	Rotary 1		Ratio			
+Map	Rotary 2		Threshold			
+Map	Rotary 3		Attack			
+Map	Rotary 4		Release			
+Map	Rotary 8		Peak Meter		Wrap			
+Map	Rotary 7		Gaint		Wrap			
+					
+
+
+//______________________________Propellerheads	PEQ-2 Two Band Parametric EQ__________________________	
+				
+Scope	Propellerheads	PEQ-2 Two Band Parametric EQ				
+//	Control Surface Item	Key	Remotable Item	Scale	Mode	
+		
+Map	Rotary 8		Peak Meter			
+Map	Rotary 1		Filter A Freq			
+Map	Rotary 2		Filter A Q			
+Map	Rotary 3		Filter A Gain			
+Map	Rotary 4		Filter B Freq			
+Map	Rotary 5		Filter B Q			
+Map	Rotary 6		Filter B Gain			
+Map	Button 4		Filter B On/Off			
+			                             
+                              
+//===================================== Reason Studio  ==============================================
+//===================================== Reason Studio  ==============================================
+	
+//_________________________________ Flower Audio Loudness Meter ______________________________________________________
+
+Scope	Flower Audio	com.flowerau.LoudnessMeter
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+
+Map	Button 1		Input Mode
+Map	Button 2		Algorithm
+Map	Button 3		Time Window
+Map	Button 4		Big Display Mode
+
+
+//_________________________________Selig Audi Leveler______________________________________________________
+
+Scope	Selig Audio	com.seligaudio.TheCurve
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+
+Map	Button 1		Reset Peak
+Map	Rotary 1		Target
+Map	Rotary 2		Recovery
+Map	Rotary 3		Curve
+Map	Rotary 4		Blend
+Map	Rotary 5		Output
+Map	Button 5		Look Ahead
+
+
+//_________________________________Selig Audio Gain______________________________________________________
+
+Scope	Selig Audio	com.seligaudio.seliggain
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Enabled
+Map	Button 2		Mute
+Map	Button 3		Mode
+Map	Rotary 1		Fade Time
+Map	Rotary 2		Gain Trim
+Map	Button 4		Polarity Invert
+Map	Button 5		Mono
+Map	Rotary 3		Pan Left		Boost/Cut
+Map	Rotary 4		Pan Right		Boost/Cut
+Map	Rotary 5		Pan Law
+Map	Button 6		Peak Hold Reset
+Map	Button 7		Peak Hold Auto
+
+
+// ____________________________________Selig Audio DeEsser_________________
+
+Scope	Selig Audio	com.seligaudio.SeligDeEsser
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Button 1		Enabled
+Map	Rotary 1		Listen
+Map	Rotary 2		Crossover
+Map	Rotary 3		Reduction
+Map	Rotary 4		V-S Sensitivity
+Map	Button 4		Look Ahead
+
+//______________________________Quadelectra StereoSplitter____________________________
+
+Scope	Quadelectra Audioworx	com.quadelectra.StereoSplitter
+Define Group	Flip	Normal	Flipped
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+
+
+Map	Button 1		Mid: Enabled			Normal
+Map	Button 2		Mid: Delay Left Switch			Normal
+Map	Button 3		Mid: Delay Right Switch			Normal
+Map	Button 4		Side: Enabled			Normal
+Map	Button 5		Side: Delay Left Switch			Normal
+Map	Button 6		Side: Delay Right Switch			Normal
+
+Map	Rotary 1		Mid: Gain			Normal
+Map	Rotary 2		Mid: Delay			Normal
+Map	Rotary 4		Side: Gain			Normal
+Map	Rotary 5		Side: Delay			Normal
+Map	Rotary 8		Volume			Normal
+
+Map	Button 1		Invert Mid L Chan.			Flipped
+Map	Button 2		Invert Mid R Chan.			Flipped
+Map	Button 3		Invert Side L Chan.			Flipped
+Map	Button 4		Invert Side R Chan.			Flipped
+Map	Button 6		Swap Channels			Flipped
+Map	Button 7		Mono			Flipped
+Map	Rotary 1		Side Width			Flipped
+Map	Rotary 4		Pan Mid			Flipped
+Map	Rotary 5		Pan Side			Flipped
+Map	Rotary 8		Volume			Flipped
+
+// ____________________________________Ochen K Carve EQ Ducker_________________
+
+Scope	Ochen K.	com.ochenk.CarveEQ
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Ref In Sensitivity
+Map	Rotary 2		High Pass
+Map	Rotary 3		Low Pass
+Map	Rotary 4		Amount
+Map	Rotary 5		Attack
+Map	Rotary 6		Release
+
+//______________________________iZotope Inc Ozone Maximizer____________________________
+Scope	iZotope, Inc	com.izotope.ozonemaximizer
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Rotary 1		Threshold
+Map	Rotary 2		Stereo Link Amount
+Map	Rotary 3		Margin
+Map	Button 6		Enable Dither
+Map	Rotary 5		Noise Shaping		Boost/Cut
+Map	Rotary 6		Dither Amount		Boost/Cut
+Map	Rotary 7		Bit Depth		Boost/Cut
+Map	Button 2		Enable Auto Blank
+Map	Button 3		Enable Limit Peaks
+Map	Button 4		Enable Harmonic Suppression
+Map	Button 5		Enable DC Filter
+
+
+
+//========================================= KUASSA ==================================
+//========================================= KUASSA ==================================
+
+//______________________________Kuassa EVE AT4____________________________
+
+Scope	Kuassa	com.kuassa.EVEAT4
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Low Cut Freq		Boost/Cut
+Map	Rotary 2		Low Freq		Boost/Cut
+Map	Rotary 3		Low Gain
+Map	Rotary 4		Mid Freq		Boost/Cut
+Map	Rotary 5		Mid Gain
+Map	Rotary 6		High Freq		Boost/Cut
+Map	Rotary 7		High Gain
+Map	Rotary 8		High Cut Freq		Boost/Cut
+
+Map	Master Fader		Output Volume
+
+Map	Button 4		Mid Q
+Map	Button 8		Phase On / Off
+
+//______________________________Kuassa Efektor CP3603____________________________
+
+Scope	Kuassa	com.kuassa.EfektorCP3603
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Button 2		Compressor Type					
+Map	Button 1		On / Bypass					
+Map	Button 3		Dual Mono On/Off		
+
+Map	Rotary 1		Compressor			
+Map	Rotary 2		Release			
+Map	Rotary 3		Level				
+
+//______________________________Kuassa  Efektor CH3604____________________________
+
+Scope	Kuassa	com.kuassa.EfektorCH3604
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Button 2		Chorus Type					
+Map	Button 1		On / Bypass					
+Map	Button 3		Sync On/Off							
+Map	Button 4		Stereo On/Off		
+
+Map	Rotary 1		Rate			
+Map	Rotary 2		Depth			
+Map	Rotary 3		Mix							
+Map	Rotary 4		Level				
+
+//______________________________Kuassa Efektor Silencer____________________________
+
+Scope	Kuassa	com.kuassa.EfektorSilencer
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+				
+Map	Button 1		On / Bypass			
+Map	Button 2		Dual Mono On/Off			
+
+Map	Rotary 1		Threshold			
+Map	Rotary 2		Attack			
+Map	Rotary 3		Decay						
+
+//______________________________Kuassa Efektor DS3603k____________________________
+
+Scope	Kuassa	com.kuassa.EfektorDS3603
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Master Fader		Amp Master
+
+Map	Button 2		DistortionType					
+Map	Button 1		On / Bypass		
+
+Map	Rotary 1		Input Volume			
+Map	Rotary 2		Distortion			
+Map	Rotary 3		Tone				
+Map	Rotary 4		Level				
+Map	Rotary 5		Dry / Wet				
+
+//______________________________Kuassa Efektor FZ3603k____________________________
+
+Scope	Kuassa	com.kuassa.EfektorFZ3603
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Button 2		Fuzz Type					
+Map	Button 1		On / Bypass		
+
+Map	Rotary 1		Input Volume			
+Map	Rotary 2		Fuzz			
+Map	Rotary 3		Tone				
+Map	Rotary 4		Level				
+Map	Rotary 5		Dry / Wet	
+
+//______________________________Kuassa Efektor OD3603k____________________________
+
+Scope	Kuassa	com.kuassa.EfektorOD3603
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Button 2		Overdrive Type					
+Map	Button 1		On / Bypass		
+
+Map	Rotary 1		Input Volume			
+Map	Rotary 2		Overdrive			
+Map	Rotary 3		Tone				
+Map	Rotary 4		Level				
+Map	Rotary 5		Dry / Wet			
+
+//______________________________Kuassa Kratos 2 Maximizer ___________________________
+
+Scope	Kuassa	com.kuassa.Kratos2Maximizer
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 5		Dither On/Off
+Map	Button 3		Attack Type
+Map	Button 4		Release Type
+Map	Rotary 1		Texture
+Map	Rotary 2		Knee
+Map	Rotary 3		Attack
+Map	Rotary 4		Release
+Map	Rotary 5		Dither Type
+Map	Rotary 6		Dither Bit Depht
+Map	Rotary 7		Oversampling
+Map	Rotary 8		Ceiling
+Map	Master Fader		Maximize
+
+
+//______________________________Kuassa EVE MP5____________________________
+
+Scope	Kuassa	com.kuassa.EVEMP5
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Flip	Normal	Flipped
+
+Map	Rotary button 2		Flip=Flipped
+Map	Rotary button 1		Flip=Normal
+
+
+Map	Rotary 1		Input Volume			Normal
+Map	Rotary 2		MEQ Low Freq		Boost/Cut	Normal
+Map	Rotary 3		MEQ Low Peak			Normal
+Map	Rotary 4		MEQ Mid Freq		Boost/Cut	Normal
+Map	Rotary 5		MEQ Mid Dip			Normal
+Map	Rotary 6		MEQ High Freq		Boost/Cut	Normal
+Map	Rotary 7		MEQ High Peak			Normal
+Map	Rotary 8		Output Volume			Normal
+
+Map	Rotary 1		EQP Low Freq		Boost/Cut	Flipped
+Map	Rotary 2		EQP Low Boost			Flipped
+Map	Rotary 3		EQP Low Atten			Flipped
+Map	Rotary 4		EQP HighBoost Freq		Boost/Cut	Flipped
+Map	Rotary 5		EQP HighBoost			Flipped
+Map	Rotary 6		EQP HighBoost Bandwidth			Flipped
+Map	Rotary 7		EQP HighAtten Freq		Boost/Cut	Flipped
+Map	Rotary 8		EQP HighAtten			Flipped
+
+Map	Button 8		MEQ On/Off			Normal
+Map	Button 1		Saturation On/Off			Normal
+Map	Button 2		Saturation Auto Level On/Off			Normal
+Map	Button 1		Saturation On/Off			Flipped
+Map	Button 2		Saturation Auto Level On/Off			Flipped
+Map	Button 8		EQP On/Off			Flipped                                                                       
+  
+//______________________________Kuassa EVE AT1____________________________
+
+Scope	Kuassa	com.kuassa.EVEAT1
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Flip	Normal	Flipped
+Map	Rotary button 2		Flip=Flipped
+Map	Rotary button 1		Flip=Normal
+
+Map	Rotary 1		Low Cut Freq		Boost/Cut	Normal
+Map	Rotary 2		Low Freq		Boost/Cut	Normal
+Map	Rotary 3		Low Gain			Normal
+Map	Rotary 5		High Freq		Boost/Cut	Normal
+Map	Rotary 6		High Gain			Normal
+Map	Rotary 7		High Cut Freq		Boost/Cut	Normal
+Map	Rotary 8		Output Volume			Normal
+
+Map	Rotary 3		Low Mid Freq		Boost/Cut	Flipped
+Map	Rotary 4		Low Mid Gain			Flipped
+Map	Rotary 5		High Mid Freq		Boost/Cut	Flipped
+Map	Rotary 6		High Mid Gain			Flipped
+Map	Rotary 8		Output Volumen			Flipped
+
+Map	Button 2		Low Shelf/Peak			Normal
+Map	Button 5		High Shelf/Peak			Normal
+Map	Button 8		Phase On/Off			Normal
+Map	Button 3		Low Mid Q			Flipped
+Map	Button 5		High Mid Q			Flipped
+Map	Button 8		Phase On/Off			Flipped
+
+
+//______________________________Kuassa Delay Efektor DL3606____________________________
+
+Scope	Kuassa	com.kuassa.EfektorDL3606
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+
+Map	Rotary 1		Delay Type
+Map	Rotary 2		Delay
+Map	Rotary 3		Feedback
+Map	Rotary 4		RateSync
+Map	Rotary 5		Depth
+Map	Rotary 6		Wet Level
+Map	Rotary 7		Dry Level
+
+
+Map	Button 1		Delay Sync On/Off
+Map	Button 3		Stereo Modulation On/Off
+Map	Button 4		Rate Sync On/Off
+Map	Button 2		Pingpong On/Off
+Map	Button 8		On / Bypass
+
+
+//______________________________Kuassa Amplifikation Vermilion____________________________
+
+Scope	Kuassa	com.kuassa.AmplifikationVermilion
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Rotary Button 5		Rotaries=Groop1
+Map	Rotary Button 6		Rotaries=Groop2
+Map	Rotary Button 7		Rotaries=Groop3
+Map	Rotary Button 8		Rotaries=Groop4
+	
+
+Map	Master Fader		Amp Vol
+
+Map	Button 2		Amp Type			Groop1
+Map	Button 5		Amp Channel				Groop1
+Map	Button 1		Amp On/Off			Groop1
+
+Map	Rotary 1		Amp Gain			Groop1
+Map	Rotary 2		Amp Low				Groop1
+Map	Rotary 3		Amp Mid				Groop1
+Map	Rotary 4		Amp High				Groop1
+Map	Rotary 5		Amp Pres				Groop1
+
+Map	Rotary 1		Tremolo Speed			Groop2
+Map	Rotary 2		Tremolo Depth			Groop2
+Map	Rotary 3		Reverb				Groop2
+
+Map	Button 1		Tremolo Sync				Groop2
+Map	Button 2		FX On/Off			Groop2
+
+
+Map	Button 2		Gate On/Off			Groop3
+Map	Button 7		Limiter On/Off			Groop3
+
+Map	Rotary 1		Input Volume			Groop3
+Map	Rotary 2		Gate Threshold			Groop3
+Map	Rotary 3		Gate Attack				Groop3
+Map	Rotary 4		Gate Decay			Groop3
+Map	Rotary 8		Output Volume			Groop3
+
+
+Map	Rotary 1		Mic A Axis			Groop4
+Map	Rotary 2		Mic A Distance			Groop4
+Map	Rotary 3		Mic A Panning				Groop4
+Map	Rotary 4		Mic A Volume			Groop4
+Map	Rotary 5		Mic B Axis			Groop4
+Map	Rotary 6		Mic B Distance			Groop4
+Map	Rotary 7		Mic B Panning			Groop4
+Map	Rotary 8		Mic B Volume			Groop4
+
+Map	Button 1		Amp Type			Groop4
+Map	Button 2		Cab A Type			Groop4
+Map	Button 3		Mic A Type			Groop4
+Map	Button 4		Cab B Type			Groop4
+Map	Button 5		Mic B Type			Groop4
+Map	Button 6		Mic A Angle			Groop4
+Map	Button 7		Mic B Angle			Groop4
+
+//______________________________Kuassa Amplifikation Creme____________________________
+
+Scope	Kuassa	com.kuassa.AmplifikationCreme
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop2	Groop1	Groop3	Groop4
+Define Group	Flip	Normal	Flipped
+
+
+Map	Rotary Button 4		Rotaries=Groop2
+Map	Rotary Button 3		Rotaries=Groop1
+Map	Rotary Button 2		Rotaries=Groop3
+Map	Rotary Button 1		Rotaries=Groop4
+
+
+
+Map	Master Fader		Amp Vol
+
+Map	Button 2		Amp Type			Groop1
+Map	Button 5		Amp Channel				Groop1
+Map	Button 1		Amp On/Off			Groop1
+
+Map	Rotary 1		Amp Gain			Groop1
+Map	Rotary 2		Amp Low				Groop1
+Map	Rotary 3		Amp Mid				Groop1
+Map	Rotary 4		Amp High				Groop1
+Map	Rotary 5		Amp Pres				Groop1
+
+
+Map	Rotary 1		FX Drive			Groop2
+Map	Rotary 2		FX Tone			Groop2
+Map	Rotary 3		FX Level				Groop2
+
+Map	Button 1		FX Type				Groop2
+Map	Button 2		FX On/Off			Groop2
+
+
+Map	Button 2		Gate On/Off			Groop3
+Map	Button 7		Limiter On/Off			Groop3
+
+Map	Rotary 1		Input Volume			Groop3
+Map	Rotary 2		Gate Threshold			Groop3
+Map	Rotary 3		Gate Attack				Groop3
+Map	Rotary 4		Gate Decay			Groop3
+Map	Rotary 8		Output Volume			Groop3
+
+
+Map	Rotary 1		Mic A Axis			Groop4
+Map	Rotary 2		Mic A Distance			Groop4
+Map	Rotary 3		Mic A Panning				Groop4
+Map	Rotary 4		Mic A Volume			Groop4
+Map	Rotary 5		Mic B Axis			Groop4
+Map	Rotary 6		Mic B Distance			Groop4
+Map	Rotary 7		Mic B Panning			Groop4
+Map	Rotary 8		Mic B Volume			Groop4
+
+Map	Button 1		Amp Type			Groop4
+Map	Button 2		Cab A Type			Groop4
+Map	Button 3		Mic A Type			Groop4
+Map	Button 4		Cab B Type			Groop4
+Map	Button 5		Mic B Type			Groop4
+Map	Button 6		Mic A Angle			Groop4
+Map	Button 7		Mic B Angle			Groop4
+
+//______________________________Kuassa Amplifikation Caliburn____________________________
+
+Scope	Kuassa	com.kuassa.AmplifikationCaliburn
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Rotary Button 4		Rotaries=Groop1
+Map	Rotary Button 3		Rotaries=Groop2
+Map	Rotary Button 2		Rotaries=Groop3
+Map	Rotary Button 1		Rotaries=Groop4
+	
+
+Map	Master Fader		Amp Master
+
+Map	Button 2		Amp Type			Groop1
+Map	Button 7		Amp Channel				Groop1
+Map	Button 1		Amp On/Off			Groop1
+
+Map	Rotary 1		Amp Gain			Groop1
+Map	Rotary 2		Amp Low				Groop1
+Map	Rotary 3		Amp Mid				Groop1
+Map	Rotary 4		Amp High				Groop1
+Map	Rotary 5		Amp Presence				Groop1
+Map	Rotary 7		Amp Bias				Groop1
+Map	Rotary 8		Amp Sag				Groop1
+
+Map	Rotary 1		Output Highpass			Groop2
+Map	Rotary 2		Output Lowpass 			Groop2
+
+Map	Button 1		Output Filter On/Off				Groop2
+
+
+Map	Button 1		Gate On/Off			Groop3
+Map	Button 7		Limiter On/Off			Groop3
+
+Map	Rotary 1		Input Volume			Groop3
+Map	Rotary 2		Gate Threshold			Groop3
+Map	Rotary 3		Gate Attack				Groop3
+Map	Rotary 4		Gate Decay			Groop3
+Map	Rotary 8		Output Volume			Groop3
+
+
+Map	Rotary 1		Mic A Axis			Groop4
+Map	Rotary 2		Mic A Distance			Groop4
+Map	Rotary 3		Mic A Panning				Groop4
+Map	Rotary 4		Mic A Volume			Groop4
+Map	Rotary 5		Mic B Axis			Groop4
+Map	Rotary 6		Mic B Distance			Groop4
+Map	Rotary 7		Mic B Panning			Groop4
+Map	Rotary 8		Mic B Volume			Groop4
+
+Map	Button 1		Amp Type			Groop4
+Map	Button 2		Cab A Type			Groop4
+Map	Button 3		Mic A Type			Groop4
+Map	Button 4		Cab B Type			Groop4
+Map	Button 5		Mic B Type			Groop4
+Map	Button 6		Mic A Angle			Groop4
+Map	Button 7		Mic B Angle			Groop4
+
+
+                                                                 
+//______________________________Kuassa Amplifikation Matchlock____________________________
+
+Scope	Kuassa	com.kuassa.AmplifikationMatchlock
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Rotary Button 4		Rotaries=Groop1
+Map	Rotary Button 3		Rotaries=Groop2
+Map	Rotary Button 2		Rotaries=Groop3
+Map	Rotary Button 1		Rotaries=Groop4
+	
+Map	Master Fader		Amp Volume
+
+Map	Button 2		Amp Type			Groop1
+Map	Button 3		Amp Channel				Groop1
+Map	Button 1		Amp On/Off			Groop1
+Map	Button 4		Amp Bright On			Groop1
+
+
+Map	Rotary 1		Amp Low				Groop1
+Map	Rotary 2		Amp Mid				Groop1
+Map	Rotary 3		Amp High				Groop1
+Map	Rotary 7		Amp Bias				Groop1
+Map	Rotary 8		Amp Sag				Groop1
+
+
+Map	Rotary 1		Output Highpass			Groop2
+Map	Rotary 2		Output Lowpass 			Groop2
+
+
+Map	Button 1		Output Filter On/Off				Groop2
+
+Map	Button 1		Gate On/Off			Groop3
+Map	Button 7		Limiter On/Off			Groop3
+
+Map	Rotary 1		Input Volume			Groop3
+Map	Rotary 2		Gate Threshold			Groop3
+Map	Rotary 3		Gate Attack				Groop3
+Map	Rotary 4		Gate Decay			Groop3
+Map	Rotary 8		Output Volume			Groop3
+
+Map	Rotary 1		Mic A Axis			Groop4
+Map	Rotary 2		Mic A Distance			Groop4
+Map	Rotary 3		Mic A Panning				Groop4
+Map	Rotary 4		Mic A Volume			Groop4
+Map	Rotary 5		Mic B Axis			Groop4
+Map	Rotary 6		Mic B Distance			Groop4
+Map	Rotary 7		Mic B Panning			Groop4
+Map	Rotary 8		Mic B Volume			Groop4
+
+Map	Button 1		Amp Type			Groop4
+Map	Button 2		Cab A Type			Groop4
+Map	Button 3		Mic A Type			Groop4
+Map	Button 4		Cab B Type			Groop4
+Map	Button 5		Mic B Type			Groop4
+Map	Button 6		Mic A Angle			Groop4
+Map	Button 7		Mic B Angle			Groop4
+
+Map	Rotary Button 3		Cab A On/Off			Groop4
+Map	Rotary Button 4		Mic A Phase On/Off			Groop4
+Map	Rotary Button 5		Cab B On/Off			Groop4
+Map	Rotary Button 6		Mic B Phase On/Off			Groop4
+
+//______________________________Kuassa Cerberus Bass Amp____________________________
+
+Scope	Kuassa	com.kuassa.CerberusBassAmp
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4	Groop5
+
+Map	Rotary Button 5		Rotaries=Groop1
+Map	Rotary Button 4		Rotaries=Groop2
+Map	Rotary Button 3		Rotaries=Groop3
+Map	Rotary Button 2		Rotaries=Groop4
+Map	Rotary Button 1		Rotaries=Groop5
+
+Map	Master Fader		Amp Vol
+
+Map	Rotary 1		GEQ Level 62			Groop5
+Map	Rotary 2		GEQ Level 125			Groop5
+Map	Rotary 3		GEQ Level 250			Groop5
+Map	Rotary 4		GEQ Level 500			Groop5
+Map	Rotary 5		GEQ Level 1K			Groop5
+Map	Rotary 6		GEQ Level 2K			Groop5
+Map	Rotary 7		GEQ Level 4K			Groop5
+
+Map	Button 2	 	Amp Low Boost On				Groop1
+Map	Button 7		Amp High Boost On				Groop1
+Map	Button 1		GEQ On			Groop1
+Map	Button 8		Amp On/Off			Groop1
+
+Map	Rotary 2		Amp Low				Groop1
+Map	Rotary 3		Amp Mid				Groop1
+Map	Rotary 4		Amp Mid Freq			Groop1
+Map	Rotary 5		Amp Mid High			Groop1
+Map	Rotary 6		Amp Mid High Freq			Groop1
+Map	Rotary 7		Amp High			Groop1
+
+Map	Rotary 2		Amp Gain			Groop2
+Map	Rotary 4		Amp Contour			Groop2
+Map	Rotary 3		Amp Comp			Groop2
+
+Map	Button 2		Amp Type			Groop2
+Map	Button 3		Amp Comp On			Groop2
+Map	Button 1		GEQ On			Groop2
+Map	Button 8		Amp On/Off			Groop2
+	
+Map	Button 2		Gate On/Off			Groop3
+Map	Button 7		Limiter On/Off			Groop3
+
+Map	Rotary 1		Input Volume			Groop3
+Map	Rotary 2		Gate Threshold			Groop3
+Map	Rotary 3		Gate Attack				Groop3
+Map	Rotary 4		Gate Decay			Groop3
+Map	Rotary 7		Dry / Wet			Groop3
+Map	Rotary 8		Output Volume			Groop3
+
+
+Map	Rotary 1		Mic A Axis			Groop4
+Map	Rotary 2		Mic A Distance			Groop4
+Map	Rotary 3		Mic A Panning				Groop4
+Map	Rotary 4		Mic A Volume			Groop4
+Map	Rotary 5		Mic B Axis			Groop4
+Map	Rotary 6		Mic B Distance			Groop4
+Map	Rotary 7		Mic B Panning			Groop4
+Map	Rotary 8		Mic B Volume			Groop4
+
+Map	Button 1		Amp Type			Groop4
+Map	Button 2		Cab A Type			Groop4
+Map	Button 3		Mic A Type			Groop4
+Map	Button 4		Cab B Type			Groop4
+Map	Button 5		Mic B Type			Groop4
+Map	Button 6		Mic A Angle			Groop4
+Map	Button 7		Mic B Angle			Groop4
+
+Map	Button 5		Cab A On/Off			Groop5
+Map	Button 6		Mic A Phase On/Off			Groop5
+Map	Button 7		Cab B On/Off			Groop5
+Map	Button 8		Mic B Phase On/Off			Groop5
+
+//========================================= KUASSA ==================================
+//========================================= KUASSA ==================================
+
+//========================================= kiloHearts ==================================
+//========================================= kiloHearts ==================================
+
+//______________________________kiloHearts 3BandEQ____________________________
+
+Scope	kiloHearts	com.kilohearts.3BandEQ
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+								
+
+Map	Rotary 1		Low			
+Map	Rotary 2		Low Split			
+Map	Rotary 3		Mid		
+Map	Rotary 4		High Split		
+Map	Rotary 5		High
+
+//______________________________kiloHearts Chorus____________________________
+
+Scope	kiloHearts	com.kilohearts.Chorus
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Button 1		Taps					
+
+Map	Rotary 1		Delay			
+Map	Rotary 2		Depth			
+Map	Rotary 3		Rate		
+Map	Rotary 4		Spread		
+Map	Rotary 5		Mix
+
+//______________________________kiloHearts Delay ____________________________
+
+Scope	kiloHearts	com.kilohearts.Delay
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+				
+Map	Button 1		Ping-Pong						
+
+Map	Rotary 1		Delay Time (steps)			
+Map	Rotary 2		Delay Unit			
+Map	Rotary 3		Feedback		
+Map	Rotary 4		Duck		
+Map	Rotary 5		Pan		
+Map	Rotary 6		Mix
+
+//______________________________kiloHearts Gain ____________________________
+
+Scope	kiloHearts	com.kilohearts.Gain
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	Groop1	Groop2	Groop3	Groop4
+
+Map	Rotary 1		Gain	
+
+
+
+//______________________________kiloHearts Limiter ____________________________
+
+Scope	kiloHearts	com.kilohearts.Limiter
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+				
+Map	Rotary 1		Threshold			
+Map	Rotary 2		Release			
+Map	Rotary 3		Input Gain		
+Map	Rotary 4		Output Gain		
+
+//______________________________kiloHearts Reverser ____________________________
+
+Scope	kiloHearts	com.kilohearts.Reverser
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+ 									
+
+Map	Rotary 1		Delay Time (steps)			
+Map	Rotary 2		Delay Unit			
+Map	Rotary 3		Crossfade		
+Map	Rotary 4		Mix		
+
+
+//______________________________kiloHearts Stereo ____________________________
+
+Scope	kiloHearts	com.kilohearts.Stereo
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+									
+
+Map	Rotary 1		Mid			
+Map	Rotary 2		Eidth			
+Map	Rotary 3		Pan	
+
+
+//______________________________kiloHearts TransientShaper ____________________________
+
+Scope	kiloHearts	com.kilohearts.TransientShaper
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+			
+Map	Button 1		Clip						
+
+Map	Rotary 1		Attack			
+Map	Rotary 2		Pump			
+Map	Rotary 3		Sustain		
+Map	Rotary 4		Speed
+
+
+//========================================= kiloHearts ==================================
+//========================================= kiloHearts ==================================
+
+
+//========================================= Synapse Audio ==================================
+//========================================= Synapse Audio ==================================
+
+
+
+//_______________________________Synapse Audio Software Chorus__________________________________________________
+
+//Utilities   Synapse Audio Software Chorus
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseChorus
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Type
+Map	Button 2		Sync On/Off
+Map	Rotary 1		Delay		Wrap
+Map	Rotary 2		Rate		Wrap
+Map	Rotary 3		Rate (sync)		Wrap
+Map	Rotary 4		Depth		Wrap
+Map	Rotary 5		Feedback		Wrap
+Map	Rotary 6		Dry/Wet		Wrap
+
+
+//_______________________________Synapse Audio Software Filter__________________________________________________
+
+//Utilities   Synapse Audio Software Filter
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseFilter
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 2		Filter Type
+Map	Rotary 1		Drive		Wrap
+Map	Rotary 2		filter type list		Wrap
+Map	Rotary 3		Cutoff		Wrap
+Map	Rotary 4		Resonance		Wrap
+
+
+//_______________________________Synapse Audio Software Phaser____________________________
+
+//Utilities   Synapse Audio Software Phaser
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapsePhaser
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Button 1		Phaser Stages Switch
+Map	Button 4		Lfo Tempo Sync On/Off
+Map	Rotary 1		Phaser Frequency		Wrap
+Map	Rotary 2		Phaser Feedback		Wrap
+Map	Rotary 3		spread		Wrap
+Map	Rotary 4		LFO Rate		Wrap
+Map	Rotary 5		LFO Rate (SYNC)		Wrap
+Map	Rotary 6		LFO Mod		Wrap
+Map	Rotary 7		Output Mix		Wrap
+
+//_______________________________Synapse Audio Software Reverb____________________________
+
+//Utilities   Synapse Audio Software Reverb
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseReverb1
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+Map	Button 6		Mod Switch Off/On
+Map	Rotary 1		Reverb Time		Wrap
+Map	Rotary 2		Pre-Delay		Wrap
+Map	Rotary 3		HF-Damp		Wrap
+Map	Rotary 4		Low Cut		Wrap
+Map	Rotary 5		High Cut		Wrap
+Map	Rotary 6		Mod Amount		Wrap
+Map	Rotary 7		Dry/Wet		Wrap
+
+
+//_______________________________Synapse Audio Software Ring Modulation____________________________
+
+//Utilities   Synapse Audio Software Ring Modulation
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseRingMod
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Button 1		Sidechain Solo
+Map	Button 2		Modulator waveform
+Map	Button 3		Frequency Range
+Map	Rotary 1		Input Drive		Wrap
+Map	Rotary 2		Modulator Frequency		Wrap
+Map	Rotary 3		Output Mix		Wrap
+
+
+//_______________________________Synapse Audio Software Vintage EQ____________________________
+
+//Utilities   Synapse Audio Software Vintage EQ
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseVintEQ
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Rotary 1		Range		Wrap
+Map	Rotary 2		Low		Wrap
+Map	Rotary 3		Mid		Wrap
+Map	Rotary 4		High		Wrap
+
+
+//______________________________Synapse Audio GQ7____________________________
+
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseGQ7
+
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+Define Group	Rotaries	FRQ	Gain	Q
+
+Map	Rotary button 1		Rotaries=Q
+Map	Rotary button 2		Rotaries=Gain
+Map	Rotary button 3		Rotaries=FRQ
+
+
+
+Map	Rotary button 1		Band 1 Type				FRQ
+Map	Rotary button 2		Band 2 Type				FRQ
+Map	Rotary button 3		Band 3 Type				FRQ
+Map	Rotary button 4		Band 4 Type				FRQ
+Map	Rotary button 5		Band 5 Type				FRQ
+
+Map	Button 1		Low Cut Filter Active				FRQ
+Map	Button 2		Band 1 Active			FRQ
+Map	Button 3		Band 2 Active				FRQ
+Map	Button 4		Band 3 Active				FRQ
+Map	Button 5		Band 4 Active				FRQ
+Map	Button 6		Band 5 Active				FRQ
+Map	Button 7		High Cut Filter Active				FRQ
+
+
+Map	Rotary 1		Low Cut Filter Slope		Wrap		Q
+Map	Rotary 2		Band 1 Q		Boost/Cut		Q
+Map	Rotary 3		Band 2 Q		Boost/Cut		Q
+Map	Rotary 4		Band 3 Q		Boost/Cut		Q
+Map	Rotary 5		Band 4 Q		Boost/Cut		Q
+Map	Rotary 6		Band 5 Q		Boost/Cut		Q
+Map	Rotary 7		High Cut Filter Slope		Wrap		Q
+
+Map	Rotary 1		Low Cut Filter Freq		Wrap		Gain
+Map	Rotary 2		Band 1 Freq		Boost/Cut		Gain
+Map	Rotary 3		Band 2 Freq		Boost/Cut			Gain
+Map	Rotary 4		Band 3 Freq		Boost/Cut			Gain
+Map	Rotary 5		Band 4 Freq		Boost/Cut			Gain
+Map	Rotary 6		Band 5 Freq		Boost/Cut			Gain
+Map	Rotary 7		High Cut Filter Freq		Boost/Cut			Gain
+
+
+Map	Rotary 1		Low Cut Filter Resonance				FRQ
+Map	Rotary 2		Band 1 Gain				FRQ
+Map	Rotary 3		Band 2 Gain				FRQ
+Map	Rotary 4		Band 3 Gain				FRQ
+Map	Rotary 5		Band 4 Gain				FRQ
+Map	Rotary 6		Band 5 Gain				FRQ
+Map	Rotary 7		High Cut Filter Resonance				FRQ
+
+Map	Master Fader		Output Volume
+
+
+//______________________________Synapse Audio Ninety____________________________
+
+Scope	Synapse Audio Software	com.synapseAudioSoftware.SynapseNinety
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Mode
+Map	Button 3		Sync
+Map	Rotary 3		Rate (sync)
+Map	Rotary 2		Rate
+Map	Rotary 1		Mix
+Map	Rotary 5		Color
+Map	Rotary 4		Width
+
+
+//========================================= Synapse Audio ==================================
+//========================================= Synapse Audio ==================================
+
+//========================================= Softube ==================================
+//========================================= Softube ==================================
+
+
+// TubeTechCC ___________________________
+
+Scope	Softube	com.softube.re.TubeTechCC
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Define Group	Rotaries	PE1C	ME1B	CL1B
+
+
+Map	Rotary Button 3		Rotaries=PE1C
+Map	Rotary Button 2		Rotaries=ME1B
+Map	Rotary Button 1		Rotaries=CL1B
+
+Map	Button 1		PE1C in				PE1C
+Map	Button 2		ME1B in				PE1C
+Map	Button 3		CL1B in				PE1C
+Map	Button 4		Comp Before Eq			PE1C
+Map	Rotary 1		PE1C Low Boost				PE1C
+Map	Rotary 2		PE1C Low Atten				PE1C
+Map	Rotary 3		PE1C Low Frequency				PE1C
+Map	Rotary 4		PE1C High Bandwidth 				PE1C
+Map	Rotary 5		PE1C High Boost				PE1C
+Map	Rotary 6		PE1C High Atten				PE1C
+Map	Rotary 7		PE1C High Frequency				PE1C
+Map	Rotary 8		PE1C High Atten Sel				PE1C
+Map	Master Fader		PE1C Output Gain				PE1C
+
+Map	Button 1		PE1C in				ME1B
+Map	Button 2		ME1B in				ME1B
+Map	Button 3		CL1B in				ME1B
+Map	Button 4		Comp Before Eq			ME1B
+Map	Rotary 1		ME1B Low Frequency				ME1B
+Map	Rotary 2		ME1B Low Peak				ME1B
+Map	Rotary 3		ME1B Mid Frequency				ME1B
+Map	Rotary 4		ME1B Mid Dip				ME1B
+Map	Rotary 5		ME1B High Frequency			ME1B
+Map	Rotary 6		ME1B High Peak				ME1B
+Map	Rotary 7		ME1B Output Gain				ME1B
+
+Map	Button 1		PE1C in				CL1B
+Map	Button 2		ME1B in				CL1B
+Map	Button 3		CL1B in				CL1B
+Map	Button 4		Comp Before Eq			CL1B
+Map	Rotary 1		CL1B Gain 			CL1B
+Map	Rotary 2		CL1B Attack 			CL1B
+Map	Rotary 3		CL1B Ratio			CL1B
+Map	Rotary 4		CL1B Release			CL1B
+Map	Rotary 5		CL1B Threshold			CL1B
+Map	Rotary 6		CL1B Select Attack Release			CL1B
+Map	Rotary 7		CL1B Meter			CL1B
+Map	Rotary 8		CL1B Sidechain			CL1B
+
+
+//______________________________Softube Reason Bass Amp____________________________
+
+Scope	Propellerhead Software	se.propellerheads.ReasonBassAmp
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Ultra Lo                     
+Map	Button 5		Ultra Hi
+Map	Button 2		Amp Switch
+Map	Button 3		Cab Switch 
+		
+Map	Rotary 1		Drive                  
+Map	Rotary 2		Bass                    
+Map	Rotary 3		Middle                      
+Map	Rotary 4		Mid Freq
+Map	Rotary 5		Treble                   
+                                                                      
+  
+
+//______________________________Softube Reason Amp____________________________
+
+Scope	Propellerhead Software	se.propellerheads.ReasonAmp
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Button 1		Boost    
+Map	Button 2		Amp Switch
+Map	Button 3		Cab Switch 
+		
+Map	Rotary 1		Gate                  
+Map	Rotary 2		Gain                    
+Map	Rotary 3		Bass                      
+Map	Rotary 4		Mid
+Map	Rotary 5		Treble 
+Map	Rotary 6		Poweramp Gain                   
+Map	Rotary 8		Volume                                                                           
+  
+
+//______________________________Softube FET Compressor____________________________
+
+Scope	Softube	com.softube.re.FETCompressor
+Define Group	Flip	Normal	Flipped
+//  Control Surface Item  Key  Remotable Item  Scale  Mode
+
+
+Map	Rotary button 1		Flip=Flipped
+Map	Rotary button 2		Flip=Normal
+
+		
+Map	Rotary 1		Input			Normal                  
+Map	Rotary 2		Ratio 			Normal                   
+Map	Rotary 3		Attack			Normal                      
+Map	Rotary 4		Release			Normal
+Map	Rotary 5		Parallel Inject			Normal 
+Map	Rotary 8		Output			Normal
+
+Map	Rotary 1		Input			Flipped                  
+Map	Rotary 2		External Side Chain			Flipped                    
+Map	Rotary 3		Low Cut			Flipped                      
+Map	Rotary 4		High Cut			Flipped
+Map	Rotary 5		Lookahead			Flipped
+Map	Rotary 8		Output				Flipped                                                                           
+  
+
+//______________________________Softube Dynamite(Valley People)____________________________
+
+Scope	Softube	com.softube.re.Dynamite
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Map	Rotary 1		Threshold
+Map	Rotary 2		Release
+Map	Rotary 3		Det Source
+Map	Rotary 4		Mode
+Map	Rotary 5		Det Type
+Map	Rotary 6		Range
+Map	Rotary 8		Output                                                                         
+  
+//______________________________Softube Tridemt A-Range EQ____________________________
+
+Scope	Softube	com.softube.re.ARange
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+Define Group	Flip	Normal	Flipped
+
+Map	Rotary button 2		Flip=Flipped
+Map	Rotary button 1		Flip=Normal
+
+Map	Rotary 4		Low Gain			Normal
+Map	Rotary 3		Low Mid Gain			Normal
+Map	Rotary 2		High Mid Gain			Normal
+Map	Rotary 1		High Gain			Normal
+
+Map	Rotary 4		Low Frequency			Flipped   
+Map	Rotary 3		Low Mid Frequency			Flipped   
+Map	Rotary 2		High Mid Frequency			Flipped   
+Map	Rotary 1		High Frequency			Flipped   
+Map	Rotary 7		Saturation			Flipped   
+Map	Rotary 8		Output Volume			Flipped   
+
+Map	Button 8		Phase Invert			   
+Map	Button 3		Low Pass 15kHz			Flipped   
+Map	Button 2		Low Pass 12kHz			Flipped   
+Map	Button 1		Low Pass 9kHz			Flipped   
+
+Map	Button 3		High Pass 100Hz			Normal
+Map	Button 2		High Pass 50Hz			Normal
+Map	Button 1		High Pass 25Hz 			Normal                                                                    
+  
+
+//______________________________Softube Saturation Knob____________________________
+
+Scope	Softube	com.softube.re.SaturationKnob
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+
+
+Map	Rotary 1		Saturation
+Map	Rotary 2		Saturation Type
+
+
+
+//========================================= Softube ==================================
+//========================================= Softube ==================================
+
+
+// ____________________________________Propellerheads	Reason Document _________________
+
+
+Scope	Propellerheads	Reason Document
+Define Group	Wheel	Coarse	Fine
+Define Group	Pos	Song	Left	Right
+Define Group	Pos Display		BarsBeats	Time	
+
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Map	Frm Left Button		Previous Remote Base Channel
+Map	Frm Right Button		Next Remote Base Channel
+
+Map	Loop Button		Loop On/Off
+
+Map	Play Button		Play
+Map	Stop Button		Stop
+Map	Record Button		Button
+Map	Rewind Button		Rewind
+Map	Fast Fwd Button		Fast Forward
+
+Map	Left Button		Goto Left Locator
+Map	Right Button		Goto Right Locator
+
+
+// ---------------------- Subtractor -----------
+
+Scope	Propellerheads	SubTractor Analog Synthesizer
+
+//	Control Surface Item	Key	Remotable Item	Scale	Mode
+Map	Rotary 1		Filter Freq
+
+
+
+
