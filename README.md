@@ -4,7 +4,7 @@ Remote map and Lua codecs for using
 the [Behringer X-Touch Mini](https://www.behringer.com/product.html?modelCode=P0B3M) MIDI controller with
 the [Reason](https://www.reasonstudios.com/reason) digital audio workstation (DAW).
 
-![Behringer X-Touch Mini](resources/X-TOUCH-MINI_P0B3M_Top_XL.png)
+![Behringer X-Touch Mini](resources/images/X-TOUCH-MINI_P0B3M_Top_XL.png)
 
 Based on the work of **Gulli Johansen**, who published the original Lua files and remote map in this project
 on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in November 2019.
@@ -13,7 +13,7 @@ on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in Nov
 
 To use the remote map and codecs in Reason, run the [install.sh](install.sh) script on the command line:
 
-![Screenshot: Running install.sh](resources/installation.png)
+![Screenshot: Running install.sh](resources/images/installation.png)
 
 This will copy the remote map and codec files over to the appropriate locations on your local file system so that
 Reason can use them.
@@ -27,7 +27,7 @@ After successful installation, restart Reason and select the Behringer X-Touch M
 
 Use the MIDI in and out ports provided by the X-Touch Mini.
 
-![Screenshot: Control surface setup](resources/reason-setup.png)
+![Screenshot: Control surface setup](resources/images/reason-setup.png)
 
 ## Supported Devices
 
@@ -151,7 +151,7 @@ The current version 1.0.5 supports the following devices and rack extensions.
 To create your own mapping file, first and foremost it is important to know what each of the controls on the
 X-Touch Mini are called in the mappings.
 
-![Screenshot: Control names](resources/control-names.png)
+![Screenshot: Control names](resources/images/control-names.png)
 
 * The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
   the encoders)
