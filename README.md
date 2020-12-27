@@ -31,9 +31,86 @@ Use the MIDI in and out ports provided by the X-Touch Mini.
 
 ## Supported Devices
 
-The current version 1.0.5 supports the following devices and rack extensions.
+The current version 1.0.0 supports the following devices and rack extensions.
+
+### Main Mixer
+
+![Control mapping for the main mixer](resources/images/mapping-mixer.png)
+
+The rotary knobs control either the pan of mixer channels 1-8, or the level, depending on which layer you select.
+
+The two rows of buttons are used for soloing and muting mixer channels 1-8.
+
+### Combinator
+
+![Control mapping for the Combinator](resources/images/mapping-combinator.png)
+
+The rotaries on the Combinator 1-4 are controlled with the rotary knobs 5-8 on the X-Touch Mini.
+
+The rotary knobs have two resolution modes, “coarse” and “fine”, which you can switch with the layer buttons.
+
+### Matrix
+
+![Control mapping for the Matrix](resources/images/mapping-matrix.png)
+
+Use the X-Touch Mini buttons to select patterns and banks, to turn the pattern section on or off, and to run the
+sequencer.
+
+Rotary knob 8 controls the pattern resolution.
+
+## Creating Your Own Mappings
+
+To create your own mapping file or add new devices to the existing file, first and foremost it is important to
+know what each of the controls on the X-Touch Mini are called in the mappings.
+
+![Screenshot: Control names](resources/images/control-names.png)
+
+* The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
+  the encoders)
+* The encoder buttons are named `Rotary Button 1`, `Rotary Button 2`, (…) `Rotary Button 8` (MIDI events
+  generated when you press down on one of the encoders)
+* The upper row buttons are named `Button 1`, `Button 2`, (…) `Button 8`
+* The lower row buttons are named:
+    * `Left Button`
+    * `Right Button`
+    * `Rewind Button`
+    * `Fast Fwd Button`
+    * `Loop Button`
+    * `Stop Button`
+    * `Play Button`
+    * `Record Button`
+* The master fader is (surprisingly) named `Master Fader`
+* The buttons for selecting layers are named `Layer A Button` and `Layer B Button`
+
+Take a look at how the existing mapping file is set up:
+
+- [X-Touch Mini.remotemap](src/main/maps/X-Touch%20Mini.remotemap)
+
+The documentation by Reason Studios about the mapping
+file format is also included in this repository:
+
+- [Remote Codec Developer.pdf](resources/docs/Remote%20Codec%20Developer.pdf)
+
+**Pull requests are welcome!**
+
+## Alternative Codec and Mapping
+
+The original mapping and coded by Gulli Johansen, published
+on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in November 2019 are also included in
+this project.
+
+### Installation
+
+To use the remote map and codecs by Gully Johansen in Reason, run the [install.sh](install.sh) script on the
+command line, with the parameter `johansen`:
+
+```shell
+./install.sh johansen
+```
 
 ### Reason Studios Devices and Rack Extensions
+
+The `johansen` mapping supports the following devices and rack extensions by Reason Studios:
 
 - Reason Studios Combinator
 - Reason Studios Acoustic Guitarist
@@ -63,6 +140,8 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - Reason Studios PEQ-2 Two Band Parametric EQ
 
 ### Third-party Rack Extensions
+
+The `johansen` mapping supports the following rack extensions by third-party developers:
 
 - Kuassa EVE AT1
 - Kuassa EVE AT4
@@ -146,27 +225,3 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - Red Rock Sound Re 302
 - Red Rock Sound. Orchesteral Hall Reverb
 
-## Creating Your Own Mappings
-
-To create your own mapping file, first and foremost it is important to know what each of the controls on the
-X-Touch Mini are called in the mappings.
-
-![Screenshot: Control names](resources/images/control-names.png)
-
-* The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
-  the encoders)
-* The encoder buttons are named `Rotary Button 1`, `Rotary Button 2`, (…) `Rotary Button 8` (MIDI events
-  generated when you press down on one of the encoders)
-* The upper row buttons are named `Button 1`, `Button 2`, (…) `Button 8`
-* The lower row buttons are named:
-  * `Left Button`
-  * `Right Button`
-  * `Rewind Button`
-  * `Fast Fwd Button`
-  * `Loop Button`
-  * `Stop Button`
-  * `Play Button`
-  * `Record Button`
-* The master fader is (surprisingly) named `Master Fader`
-* The Layer A button is named `Frm Left Button`
-* The Layer B button is named `Frm Right Button`
