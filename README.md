@@ -4,7 +4,7 @@ Remote map and Lua codecs for using
 the [Behringer X-Touch Mini](https://www.behringer.com/product.html?modelCode=P0B3M) MIDI controller with
 the [Reason](https://www.reasonstudios.com/reason) digital audio workstation (DAW).
 
-![Behringer X-Touch Mini](resources/X-TOUCH-MINI_P0B3M_Top_XL.png)
+![Behringer X-Touch Mini](resources/images/X-TOUCH-MINI_P0B3M_Top_XL.png)
 
 Based on the work of **Gulli Johansen**, who published the original Lua files and remote map in this project
 on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in November 2019.
@@ -13,7 +13,7 @@ on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in Nov
 
 To use the remote map and codecs in Reason, run the [install.sh](install.sh) script on the command line:
 
-![Screenshot: running install.sh](resources/installation.png)
+![Screenshot: Running install.sh](resources/images/installation.png)
 
 This will copy the remote map and codec files over to the appropriate locations on your local file system so that
 Reason can use them.
@@ -27,13 +27,13 @@ After successful installation, restart Reason and select the Behringer X-Touch M
 
 Use the MIDI in and out ports provided by the X-Touch Mini.
 
-![Screenshot: Control surface setup](resources/reason-setup.png)
+![Screenshot: Control surface setup](resources/images/reason-setup.png)
 
-# Supported Devices
+## Supported Devices
 
 The current version 1.0.5 supports the following devices and rack extensions.
 
-## Reason Studios Devices and Rack Extensions
+### Reason Studios Devices and Rack Extensions
 
 - Reason Studios Combinator
 - Reason Studios Acoustic Guitarist
@@ -62,7 +62,7 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - Reason Studios COMP-01 Compressor/Limiter
 - Reason Studios PEQ-2 Two Band Parametric EQ
 
-## Third-party Rack Extensions
+### Third-party Rack Extensions
 
 - Kuassa EVE AT1
 - Kuassa EVE AT4
@@ -70,7 +70,7 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - Kuassa Efektor Silencer
 - Kuassa Kratos 2 Maximizer
 - Kuassa Efektor CP3603
-- Kuassa  Efektor CH3604
+- Kuassa Efektor CH3604
 - Kuassa Efektor DS3603
 - Kuassa Efektor FZ3603
 - Kuassa Efektor OD3603
@@ -123,20 +123,20 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - McDSP FRG-EEE Equalizer
 - McDSP FRG-4RE Compressor
 - Bassment DSP SA16 Chorus
-- DLD Technology	Revolution
+- DLD Technology Revolution
 - Devoloop DYNARAGE
 - Rob Papen RPSpec
 - Cakewalk RE2A
 - fxpansion DCAM Envolute Shaper
-- Reasonistas	CORE
+- Reasonistas CORE
 - fxpansion DCAM Bus COmpresser
 - LAB ONE Buttonings ReQ 131
 - Audiorealism Abl2
 - Audiorealism ReDominator
 - IOx Audioware Titan 410x Precision Maximizer
 - IOx Audioware Onyx Onyx 430i Tube Limiter
-- Red Rock Sound	Multi Band Compressor
-- Red Rock Sound	Multi Band Limiter
+- Red Rock Sound Multi Band Compressor
+- Red Rock Sound Multi Band Limiter
 - Red Rock Sound C1-Alpha
 - Red Rock Sound C1L1
 - Red Rock Sound C1-Sigma
@@ -145,3 +145,28 @@ The current version 1.0.5 supports the following devices and rack extensions.
 - Red Rock Sound Re 200
 - Red Rock Sound Re 302
 - Red Rock Sound. Orchesteral Hall Reverb
+
+## Creating Your Own Mappings
+
+To create your own mapping file, first and foremost it is important to know what each of the controls on the
+X-Touch Mini are called in the mappings.
+
+![Screenshot: Control names](resources/images/control-names.png)
+
+* The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
+  the encoders)
+* The encoder buttons are named `Rotary Button 1`, `Rotary Button 2`, (…) `Rotary Button 8` (MIDI events
+  generated when you press down on one of the encoders)
+* The upper row buttons are named `Button 1`, `Button 2`, (…) `Button 8`
+* The lower row buttons are named:
+  * `Left Button`
+  * `Right Button`
+  * `Rewind Button`
+  * `Fast Fwd Button`
+  * `Loop Button`
+  * `Stop Button`
+  * `Play Button`
+  * `Record Button`
+* The master fader is (surprisingly) named `Master Fader`
+* The Layer A button is named `Frm Left Button`
+* The Layer B button is named `Frm Right Button`

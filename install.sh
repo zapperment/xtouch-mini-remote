@@ -16,6 +16,16 @@ if [ ! "$(uname)" == "Darwin" ]; then
   exit 1
 fi
 
+if [ ! $1 ]; then
+  echo_bold "Using default configuration (main)"
+  CONFIG="main"
+else
+  echo_bold "Using configuration '$1'"
+  CONFIG="$1"
+fi
+
+echo ""
+
 USER_NAME=$(scutil <<<"show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
 
 REMOTE_DIR="/Users/${USER_NAME}/Library/Application Support/Propellerhead Software/Remote"
@@ -60,8 +70,8 @@ echo ""
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
-CODECS_SOURCE_DIR="${SCRIPT_DIR}/src/codecs"
-MAPS_SOURCE_DIR="${SCRIPT_DIR}/src/maps"
+CODECS_SOURCE_DIR="${SCRIPT_DIR}/src/${CONFIG}/codecs"
+MAPS_SOURCE_DIR="${SCRIPT_DIR}/src/${CONFIG}/maps"
 
 echo_bold "Copying files:"
 
