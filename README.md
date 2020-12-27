@@ -31,7 +31,8 @@ Use the MIDI in and out ports provided by the X-Touch Mini.
 
 ## Supported Devices
 
-The current version 1.0.0 supports the following devices and rack extensions.
+The [current version 2.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v2.0.0) supports the
+following devices and rack extensions.
 
 ### Main Mixer
 
@@ -86,8 +87,7 @@ Take a look at how the existing mapping file is set up:
 
 - [X-Touch Mini.remotemap](src/main/maps/X-Touch%20Mini.remotemap)
 
-The documentation by Reason Studios about the mapping
-file format is also included in this repository:
+The documentation by Reason Studios about the mapping file format is also included in this repository:
 
 - [Remote Codec Developer.pdf](resources/docs/Remote%20Codec%20Developer.pdf)
 
