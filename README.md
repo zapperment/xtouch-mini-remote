@@ -13,7 +13,7 @@ on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in Nov
 
 Download the most recent version here: 
 
-* [Version 2.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v2.0.0)
+* [Version 2.0.0](https://github.com/zapperment/xtouch-mini-remote/archive/v2.0.0.zip)
 
 To use the remote map and codecs in Reason, run the [install.sh](install.sh) script on the command line:
 
