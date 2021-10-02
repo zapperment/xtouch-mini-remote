@@ -12,15 +12,11 @@ echo "$(uname)"
 
 if [ ! "$(uname)" == "Darwin" ]; then
   echo "Detected Windows" 
-  REMOTE_DIR="/d/Programme/Reason 12/Remote"
-  CODECS_DIR="/DefaultCodecs"
-  MAPS_DIR="/DefaultMaps"
+  REMOTE_DIR="/c/ProgramData/Propellerhead Software/Remote"
 else
   echo "Detected macOS" 
   USER_NAME=$(scutil <<<"show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
   REMOTE_DIR="/Users/${USER_NAME}/Library/Application Support/Propellerhead Software/Remote"
-  CODECS_DIR="/Codecs"
-  MAPS_DIR="/Maps"
 fi
 
 if [ ! $1 ]; then
@@ -46,7 +42,7 @@ fi
 
 echo ""
 
-CODECS_TARGET_DIR="${REMOTE_DIR}${CODECS_DIR}/Lua Codecs/Behringer"
+CODECS_TARGET_DIR="${REMOTE_DIR}/Codecs/Lua Codecs/Behringer"
 
 if [ ! -d "${CODECS_TARGET_DIR}" ]; then
   echo_bold "Creating codecs dir:"
@@ -59,7 +55,7 @@ fi
 
 echo ""
 
-MAPS_TARGET_DIR="${REMOTE_DIR}${MAPS_DIR}/Behringer"
+MAPS_TARGET_DIR="${REMOTE_DIR}/Maps/Behringer"
 
 if [ ! -d "${MAPS_TARGET_DIR}" ]; then
   echo_bold "Creating maps dir:"
