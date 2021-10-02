@@ -8,12 +8,19 @@ function echo_bold() {
   echo -e "\033[1m$1\033[0m"
 }
 
+echo "$(uname)"
+
 if [ ! "$(uname)" == "Darwin" ]; then
-  echo_red "Sorry, this install script only works on macOS!"
-  echo "On windows or other systems, you'll have to copy"
-  echo "the files from the src directory over yourself."
-  echo "More information: https://forum.reasontalk.com/viewtopic.php?t=7514815"
-  exit 1
+  echo "Detected Windows" 
+  REMOTE_DIR="/d/Programme/Reason 12/Remote"
+  CODECS_DIR="/DefaultCodecs"
+  MAPS_DIR="/DefaultMaps"
+else
+  echo "Detected macOS" 
+  USER_NAME=$(scutil <<<"show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
+  REMOTE_DIR="/Users/${USER_NAME}/Library/Application Support/Propellerhead Software/Remote"
+  CODECS_DIR="/Codecs"
+  MAPS_DIR="/Maps"
 fi
 
 if [ ! $1 ]; then
@@ -26,9 +33,6 @@ fi
 
 echo ""
 
-USER_NAME=$(scutil <<<"show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
-
-REMOTE_DIR="/Users/${USER_NAME}/Library/Application Support/Propellerhead Software/Remote"
 
 if [ ! -d "${REMOTE_DIR}" ]; then
   echo_red "Error – no Reason!"
@@ -42,7 +46,7 @@ fi
 
 echo ""
 
-CODECS_TARGET_DIR="${REMOTE_DIR}/Codecs/Lua Codecs/Behringer"
+CODECS_TARGET_DIR="${REMOTE_DIR}${CODECS_DIR}/Lua Codecs/Behringer"
 
 if [ ! -d "${CODECS_TARGET_DIR}" ]; then
   echo_bold "Creating codecs dir:"
@@ -55,7 +59,7 @@ fi
 
 echo ""
 
-MAPS_TARGET_DIR="${REMOTE_DIR}/Maps/Behringer"
+MAPS_TARGET_DIR="${REMOTE_DIR}${MAPS_DIR}/Behringer"
 
 if [ ! -d "${MAPS_TARGET_DIR}" ]; then
   echo_bold "Creating maps dir:"
