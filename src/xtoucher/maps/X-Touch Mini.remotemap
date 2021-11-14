@@ -46,6 +46,7 @@ Map	Rewind Button		Button 11
 Map	Fast Fwd Button		Button 12
 Map	Loop Button		Button 13
 Map	Stop Button		Button 14
-Map	Play Button		Button 15
-Map	Record Button		Button 16
+Map	Play Button		Run Pattern Devices
+Map	Record Button		Bypass All FX
 Map	Device Name		Device Name
+Map	Patch Name		Patch Name
