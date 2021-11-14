@@ -1,24 +1,35 @@
---g_is_lcd_enabled = false
-g_device_name_state = ""
-g_delivered_device_name_state = ""
+g_items = {}
 
-g_patch_name_state = ""
-g_delivered_patch_name_state = ""
-
-g_debug_message = ""
-g_delivered_debug_message = ""
+g_states = {
+	["Device Name"] = {
+		command = "00",
+		next = nil,
+		prev = nil
+	},
+	["Patch Name"] = {
+		command = "01",
+		next = nil,
+		prev = nil
+	},
+	["Debug Message"] = {
+		command = "02",
+		next = nil,
+		prev = nil
+	}
+}
 
 function send_debug(message)
+	g_states["Debug Message"].next = message
 	g_debug_message = message
 end
 
 function remote_set_state(changed_items)
 	for i, item_index in ipairs(changed_items) do
-		if item_index == g_device_name_index then
-			g_device_name_state = remote.get_item_text_value(item_index)
-		end
-		if item_index == g_patch_name_index then
-			g_patch_name_state = remote.get_item_text_value(item_index)
+		local item_name = g_items[item_index].name
+		if g_states[item_name] ~= nil then
+			g_states[item_name].next = remote.get_item_text_value(item_index)
+		else
+			send_debug(string.format("setting state: %i", item_index))
 		end
 	end
 end
@@ -41,23 +52,13 @@ end
 
 function remote_deliver_midi()
 	local ret_events = {}
-	local new_device_name_state = g_device_name_state
-	if g_delivered_device_name_state ~= new_device_name_state then
-		local device_name_event = make_sysex_text_message(new_device_name_state, "00")
-		table.insert(ret_events, device_name_event)
-		g_delivered_device_name_state = new_device_name_state
-	end
-	local new_patch_name_state = g_patch_name_state
-	if g_delivered_patch_name_state ~= new_patch_name_state then
-		local patch_name_event = make_sysex_text_message(new_patch_name_state, "01")
-		table.insert(ret_events, patch_name_event)
-		g_delivered_patch_name_state = new_patch_name_state
-	end
-	local new_debug_message = g_debug_message
-	if g_delivered_debug_message ~= new_debug_message then
-		local debug_message_event = make_sysex_text_message(new_debug_message, "02")
-		table.insert(ret_events, debug_message_event)
-		g_delivered_debug_message = new_debug_message
+	for i, state in pairs(g_states) do
+		local next_value = state.next
+		if state.prev ~= next_value then
+			local event = make_sysex_text_message(next_value, state.command)
+			table.insert(ret_events, event)
+			state.prev = next_value;
+		end
 	end
 	return ret_events
 end
@@ -71,7 +72,6 @@ function to_hex(nr)
 end
 
 function remote_init()
-	local items = {}
 	local auto_inputs = {}
 	local auto_outputs = {}
 
@@ -79,7 +79,7 @@ function remote_init()
 
 	local function define_master_fader()
 		local item_name = "Master Fader"
-		table.insert(items, { name = item_name, input = "value", output = "value", min = 0, max = 920 })
+		table.insert(g_items, { name = item_name, input = "value", output = "value", min = 0, max = 920 })
 	end
 
 	------------------------------------------------- Rotaries ------------------------------------------------
@@ -87,7 +87,7 @@ function remote_init()
 	local function define_rotaries()
 		for i = 1, 8 do
 			local item_name = "Rotary " .. i
-			table.insert(items, { name = item_name, input = "delta", output = "value", min = 0, max = 10 })
+			table.insert(g_items, { name = item_name, input = "delta", output = "value", min = 0, max = 10 })
 		end
 	end
 
@@ -96,7 +96,7 @@ function remote_init()
 	local function define_rotary_buttons()
 		for i = 1, 8 do
 			local item_name = "Rotary Button " .. i
-			table.insert(items, { name = item_name, input = "button", output = "text" })
+			table.insert(g_items, { name = item_name, input = "button", output = "text" })
 		end
 	end
 
@@ -104,33 +104,33 @@ function remote_init()
 
 	local function define_buttons()
 		local inputButtonDefs = {
-			{  name = "Button 1" },
-			{  name = "Button 2" },
-			{  name = "Button 3" },
-			{  name = "Button 4" },
-			{  name = "Button 5" },
-			{  name = "Button 6" },
-			{  name = "Button 7" },
-			{  name = "Button 8" },
+			{ name = "Button 1" },
+			{ name = "Button 2" },
+			{ name = "Button 3" },
+			{ name = "Button 4" },
+			{ name = "Button 5" },
+			{ name = "Button 6" },
+			{ name = "Button 7" },
+			{ name = "Button 8" },
 
-			{  name = "Layer A Button" },
-			{  name = "Layer B Button" },
+			{ name = "Layer A Button" },
+			{ name = "Layer B Button" },
 
-			{  name = "Left Button" },
-			{  name = "Right Button" },
+			{ name = "Left Button" },
+			{ name = "Right Button" },
 
-			{  name = "Rewind Button" },
-			{  name = "Fast Fwd Button" },
+			{ name = "Rewind Button" },
+			{ name = "Fast Fwd Button" },
 
-			{  name = "Loop Button" },
+			{ name = "Loop Button" },
 
-			{  name = "Stop Button" },
-			{  name = "Play Button" },
-			{  name = "Record Button" },
+			{ name = "Stop Button" },
+			{ name = "Play Button" },
+			{ name = "Record Button" },
 		}
 		for _, v in pairs(inputButtonDefs) do
 			local item_name = v.name
-			table.insert(items, { name = item_name, input = "button", output = "value", modes = { "Solid", "Flash" } })
+			table.insert(g_items, { name = item_name, input = "button", output = "value", modes = { "Solid", "Flash" } })
 		end
 	end
 
@@ -141,12 +141,12 @@ function remote_init()
 	define_rotary_buttons()
 	define_buttons()
 
-	table.insert(items, { name = "Device Name", output = "text" })
-	g_device_name_index = #items
-	table.insert(items, { name = "Patch Name", output = "text" })
-	g_patch_name_index = #items
+	table.insert(g_items, { name = "Device Name", output = "text" })
+	g_device_name_index = #g_items
+	table.insert(g_items, { name = "Patch Name", output = "text" })
+	g_patch_name_index = #g_items
 
-	remote.define_items(items)
+	remote.define_items(g_items)
 	remote.define_auto_inputs(auto_inputs)
 	remote.define_auto_outputs(auto_outputs)
 
