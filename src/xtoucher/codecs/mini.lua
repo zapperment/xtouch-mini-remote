@@ -1,21 +1,34 @@
 g_items = {}
 
 g_states = {
-	["Device Name"] = {
-		command = "00",
-		next = nil,
-		prev = nil
-	},
-	["Patch Name"] = {
-		command = "01",
-		next = nil,
-		prev = nil
-	},
-	["Debug Message"] = {
-		command = "02",
-		next = nil,
-		prev = nil
-	}
+	["Device Name"] = { type = "string" },
+	["Patch Name"] = { type = "string" },
+	["Debug Message"] = { type = "string" },
+	["Button 1"] = { type = "boolean" },
+	["Button 2"] = { type = "boolean" },
+	["Button 3"] = { type = "boolean" },
+	["Button 4"] = { type = "boolean" },
+	["Button 5"] = { type = "boolean" },
+	["Button 6"] = { type = "boolean" },
+	["Button 7"] = { type = "boolean" },
+	["Button 8"] = { type = "boolean" },
+	["Left Button"] = { type = "boolean" },
+	["Right Button"] = { type = "boolean" },
+	["Rewind Button"] = { type = "boolean" },
+	["Fast Fwd Button"] = { type = "boolean" },
+	["Loop Button"] = { type = "boolean" },
+	["Stop Button"] = { type = "boolean" },
+	["Play Button"] = { type = "boolean" },
+	["Record Button"] = { type = "boolean" },
+	["Rotary 1"] = { type = "number" },
+	["Rotary 2"] = { type = "number" },
+	["Rotary 3"] = { type = "number" },
+	["Rotary 4"] = { type = "number" },
+	["Rotary 5"] = { type = "number" },
+	["Rotary 6"] = { type = "number" },
+	["Rotary 7"] = { type = "number" },
+	["Rotary 8"] = { type = "number" },
+	["Master Fader"] = { type = "number" }
 }
 
 function send_debug(message)
@@ -26,22 +39,25 @@ end
 function remote_set_state(changed_items)
 	for i, item_index in ipairs(changed_items) do
 		local item_name = g_items[item_index].name
-		if g_states[item_name] ~= nil then
-			g_states[item_name].next = remote.get_item_text_value(item_index)
-		else
-			send_debug(string.format("setting state: %i", item_index))
+		local state = g_states[item_name]
+		if state ~= nil then
+			if state.type == "string" then
+				state.next = remote.get_item_text_value(item_index)
+			elseif state.type == "boolean" then
+				local value = remote.get_item_value(item_index)
+				state.next = value == 1 and true or false
+			else
+				state.next = remote.get_item_value(item_index)
+			end
 		end
 	end
 end
 
--- command 00: device name
--- command 01: patch name
--- command 02: debug message
-local function make_sysex_text_message(text, command)
+local function make_sysex_text_message(text)
 	-- sysex header with manufacturer ID “mackie”
-	local event = remote.make_midi("f0 00 00 66 " .. command)
-	start = 6
-	stop = 6 + string.len(text) - 1
+	local event = remote.make_midi("f0 00 00 66")
+	start = 5
+	stop = 5 + string.len(text) - 1
 	for i = start, stop do
 		sourcePos = i - start + 1
 		event[i] = string.byte(text, sourcePos)
@@ -51,16 +67,28 @@ local function make_sysex_text_message(text, command)
 end
 
 function remote_deliver_midi()
-	local ret_events = {}
-	for i, state in pairs(g_states) do
+	local changes = {}
+	for name, state in pairs(g_states) do
 		local next_value = state.next
 		if state.prev ~= next_value then
-			local event = make_sysex_text_message(next_value, state.command)
-			table.insert(ret_events, event)
-			state.prev = next_value;
+			local value_str
+			if state.type == "string" then
+				value_str = "\"" .. next_value .. "\""
+			elseif state.type == "boolean" then
+				value_str = next_value and "true" or "false"
+			else
+				value_str = string.format("%i", next_value)
+			end
+			table.insert(changes, "\"" .. name .. "\":" .. value_str)
+			state.prev = next_value
 		end
 	end
-	return ret_events
+	if #changes == 0 then
+		return {}
+	end
+	return {
+		make_sysex_text_message("{" .. table.concat(changes, ",") .. "}")
+	}
 end
 
 function from_hex(nr)
@@ -79,7 +107,7 @@ function remote_init()
 
 	local function define_master_fader()
 		local item_name = "Master Fader"
-		table.insert(g_items, { name = item_name, input = "value", output = "value", min = 0, max = 920 })
+		table.insert(g_items, { name = item_name, input = "value", output = "value", min = 0, max = 127 })
 	end
 
 	------------------------------------------------- Rotaries ------------------------------------------------
@@ -87,7 +115,7 @@ function remote_init()
 	local function define_rotaries()
 		for i = 1, 8 do
 			local item_name = "Rotary " .. i
-			table.insert(g_items, { name = item_name, input = "delta", output = "value", min = 0, max = 10 })
+			table.insert(g_items, { name = item_name, input = "delta", output = "value", min = 0, max = 127 })
 		end
 	end
 
