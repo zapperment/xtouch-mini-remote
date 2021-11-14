@@ -1,39 +1,38 @@
 g_items = {}
 
 g_states = {
-	["Device Name"] = { type = "string" },
-	["Patch Name"] = { type = "string" },
-	["Debug Message"] = { type = "string" },
-	["Button 1"] = { type = "boolean" },
-	["Button 2"] = { type = "boolean" },
-	["Button 3"] = { type = "boolean" },
-	["Button 4"] = { type = "boolean" },
-	["Button 5"] = { type = "boolean" },
-	["Button 6"] = { type = "boolean" },
-	["Button 7"] = { type = "boolean" },
-	["Button 8"] = { type = "boolean" },
-	["Left Button"] = { type = "boolean" },
-	["Right Button"] = { type = "boolean" },
-	["Rewind Button"] = { type = "boolean" },
-	["Fast Fwd Button"] = { type = "boolean" },
-	["Loop Button"] = { type = "boolean" },
-	["Stop Button"] = { type = "boolean" },
-	["Play Button"] = { type = "boolean" },
-	["Record Button"] = { type = "boolean" },
-	["Rotary 1"] = { type = "number" },
-	["Rotary 2"] = { type = "number" },
-	["Rotary 3"] = { type = "number" },
-	["Rotary 4"] = { type = "number" },
-	["Rotary 5"] = { type = "number" },
-	["Rotary 6"] = { type = "number" },
-	["Rotary 7"] = { type = "number" },
-	["Rotary 8"] = { type = "number" },
-	["Master Fader"] = { type = "number" }
+	deviceName = { type = "string" },
+	patchName = { type = "string" },
+	debugMessage = { type = "string" },
+	button1 = { type = "boolean" },
+	button2 = { type = "boolean" },
+	button3 = { type = "boolean" },
+	button4 = { type = "boolean" },
+	button5 = { type = "boolean" },
+	button6 = { type = "boolean" },
+	button7 = { type = "boolean" },
+	button8 = { type = "boolean" },
+	leftButton = { type = "boolean" },
+	rightButton = { type = "boolean" },
+	rewindButton = { type = "boolean" },
+	fastFwdButton = { type = "boolean" },
+	loopButton = { type = "boolean" },
+	stopButton = { type = "boolean" },
+	playButton = { type = "boolean" },
+	recordButton = { type = "boolean" },
+	rotary1 = { type = "number" },
+	rotary2 = { type = "number" },
+	rotary3 = { type = "number" },
+	rotary4 = { type = "number" },
+	rotary5 = { type = "number" },
+	rotary6 = { type = "number" },
+	rotary7 = { type = "number" },
+	rotary8 = { type = "number" },
+	masterFader = { type = "number" }
 }
 
 function send_debug(message)
-	g_states["Debug Message"].next = message
-	g_debug_message = message
+	g_states.debugMessage.next = message
 end
 
 function remote_set_state(changed_items)
@@ -106,7 +105,7 @@ function remote_init()
 	------------------------------------------------- Faders ------------------------------------------------
 
 	local function define_master_fader()
-		local item_name = "Master Fader"
+		local item_name = "masterFader"
 		table.insert(g_items, { name = item_name, input = "value", output = "value", min = 0, max = 127 })
 	end
 
@@ -114,7 +113,7 @@ function remote_init()
 
 	local function define_rotaries()
 		for i = 1, 8 do
-			local item_name = "Rotary " .. i
+			local item_name = "rotary" .. i
 			table.insert(g_items, { name = item_name, input = "delta", output = "value", min = 0, max = 127 })
 		end
 	end
@@ -123,7 +122,7 @@ function remote_init()
 
 	local function define_rotary_buttons()
 		for i = 1, 8 do
-			local item_name = "Rotary Button " .. i
+			local item_name = "rotaryButton" .. i
 			table.insert(g_items, { name = item_name, input = "button", output = "text" })
 		end
 	end
@@ -132,29 +131,24 @@ function remote_init()
 
 	local function define_buttons()
 		local inputButtonDefs = {
-			{ name = "Button 1" },
-			{ name = "Button 2" },
-			{ name = "Button 3" },
-			{ name = "Button 4" },
-			{ name = "Button 5" },
-			{ name = "Button 6" },
-			{ name = "Button 7" },
-			{ name = "Button 8" },
-
-			{ name = "Layer A Button" },
-			{ name = "Layer B Button" },
-
-			{ name = "Left Button" },
-			{ name = "Right Button" },
-
-			{ name = "Rewind Button" },
-			{ name = "Fast Fwd Button" },
-
-			{ name = "Loop Button" },
-
-			{ name = "Stop Button" },
-			{ name = "Play Button" },
-			{ name = "Record Button" },
+			{ name = "button1" },
+			{ name = "button2" },
+			{ name = "button3" },
+			{ name = "button4" },
+			{ name = "button5" },
+			{ name = "button6" },
+			{ name = "button7" },
+			{ name = "button8" },
+			{ name = "layerButtonA" },
+			{ name = "layerButtonB" },
+			{ name = "leftButton" },
+			{ name = "rightButton" },
+			{ name = "rewindButton" },
+			{ name = "fastFwdButton" },
+			{ name = "loopButton" },
+			{ name = "stopButton" },
+			{ name = "playButton" },
+			{ name = "recordButton" },
 		}
 		for _, v in pairs(inputButtonDefs) do
 			local item_name = v.name
@@ -169,9 +163,9 @@ function remote_init()
 	define_rotary_buttons()
 	define_buttons()
 
-	table.insert(g_items, { name = "Device Name", output = "text" })
+	table.insert(g_items, { name = "deviceName", output = "text" })
 	g_device_name_index = #g_items
-	table.insert(g_items, { name = "Patch Name", output = "text" })
+	table.insert(g_items, { name = "patchName", output = "text" })
 	g_patch_name_index = #g_items
 
 	remote.define_items(g_items)
