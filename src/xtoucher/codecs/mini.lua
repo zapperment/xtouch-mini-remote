@@ -46,7 +46,6 @@ function remote_set_state(changed_items)
 				state.next = remote.get_item_text_value(item_index)
 			elseif state.type == "boolean" then
 				local value = remote.get_item_value(item_index)
-				--send_debug("remote set state boolean value: " .. value)
 				state.next = value == 1 and true or false
 			else
 				state.next = remote.get_item_value(item_index)
@@ -72,7 +71,7 @@ local function make_sysex_text_message(text)
 		sourcePos = i - start + 1
 		event[i] = string.byte(text, sourcePos)
 	end
-	event[stop + 1] = 247         -- hex f7
+	event[stop + 1] = 247 -- hex f7 marks end of sysex message
 	return event
 end
 
