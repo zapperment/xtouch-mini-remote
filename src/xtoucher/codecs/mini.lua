@@ -109,13 +109,6 @@ function remote_process_midi(event)
 	local item_input = g_items[item_index].input
 	local item_next_value = (item_input == "button" and ret.y == 127) and 1 or ret.y
 	local item_prev_value = remote.get_item_value(item_index)
-	if ret.x == 14 then
-		send_debug("item name: " .. g_items[item_index].name
-			.. " / input: " .. item_input
-			.. " / prev val: " .. item_prev_value
-			.. " / next val: " .. item_next_value
-		)
-	end
 	if item_prev_value == item_next_value then
 		return false
 	end
