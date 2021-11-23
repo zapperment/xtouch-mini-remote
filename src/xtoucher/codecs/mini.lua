@@ -222,3 +222,9 @@ function remote_init()
 
 	send_debug("X-Toucher remote codec initialized")
 end
+
+function remote_release_from_use()
+	return {
+		make_sysex_text_message("{\"goodbye\":true}")
+	}
+end
