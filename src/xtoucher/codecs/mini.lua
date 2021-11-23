@@ -222,20 +222,3 @@ function remote_init()
 
 	send_debug("X-Toucher remote codec initialized")
 end
-
-function remote_prepare_for_use()
-	return {
-		-- turn off MC mode
-		remote.make_midi("b0 7f 00", { port = 1 }),
-
-		-- turn off all LED rings
-		remote.make_midi("b0 09 00", { port = 1 }),
-		remote.make_midi("b0 0a 00", { port = 1 }),
-		remote.make_midi("b0 0b 00", { port = 1 }),
-		remote.make_midi("b0 0c 00", { port = 1 }),
-		remote.make_midi("b0 0d 00", { port = 1 }),
-		remote.make_midi("b0 0e 00", { port = 1 }),
-		remote.make_midi("b0 0f 00", { port = 1 }),
-		remote.make_midi("b0 10 00", { port = 1 }),
-	}
-end
