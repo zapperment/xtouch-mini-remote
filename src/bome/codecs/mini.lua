@@ -32,6 +32,7 @@ g_states = {
 }
 
 g_sysex_item_id_to_item_index_map = {}
+g_item_index_to_sysex_item_id_map = {}
 
 function send_debug(message)
 	g_states.debugMessage.next = message
@@ -62,11 +63,17 @@ function get_item_index(item_name)
 	end
 end
 
-local function make_sysex_text_message(text)
+function get_sysex_item_id(item_name)
+	return g_item_index_to_sysex_item_id_map[get_item_index(item_name)]
+end
+
+local function make_sysex_text_message(name, text)
 	-- sysex header with manufacturer ID of Behringer GmbH
-	local event = remote.make_midi("f0 00 20 32")
-	start = 5
-	stop = 5 + string.len(text) - 1
+	-- followed by 0x19, which is 25 - 0-24 are the rotaries and buttons,
+	-- 25 means variable length text
+	local event = remote.make_midi("f0 00 20 32 xx", { x=get_sysex_item_id(name) })
+	start = 6
+	stop = 6 + string.len(text) - 1
 	for i = start, stop do
 		sourcePos = i - start + 1
 		event[i] = string.byte(text, sourcePos)
@@ -79,28 +86,21 @@ end
 -- encoded as sysex MIDI, to the X-Toucher app
 -- to update the state of button lights and rotary LEDs
 function remote_deliver_midi()
-	local changes = {}
+	local messages = {}
 	for name, state in pairs(g_states) do
 		local next_value = state.next
 		if state.prev ~= next_value then
-			local value_str
 			if state.type == "string" then
-				value_str = "\"" .. next_value .. "\""
+				table.insert(messages, make_sysex_text_message(name, next_value))
 			elseif state.type == "boolean" then
-				value_str = next_value and "true" or "false"
+				table.insert(messages, remote.make_midi("f0 00 20 32 xx yy f7", { x=get_sysex_item_id(name), y=next_value and 127 or 0 }))
 			else
-				value_str = string.format("%i", next_value)
+				table.insert(messages, remote.make_midi("f0 00 20 32 xx yy f7", { x=get_sysex_item_id(name), y=next_value }))
 			end
-			table.insert(changes, "\"" .. name .. "\":" .. value_str)
 			state.prev = next_value
 		end
 	end
-	if #changes == 0 then
-		return {}
-	end
-	return {
-		make_sysex_text_message("{" .. table.concat(changes, ",") .. "}")
-	}
+	return messages
 end
 
 -- Processes incoming sysex MIDI messages from the X-Toucher app,
@@ -225,11 +225,38 @@ function remote_init()
 	table.insert(g_sysex_item_id_to_item_index_map, 23, get_item_index("rotary8"))
 	table.insert(g_sysex_item_id_to_item_index_map, 24, get_item_index("masterFader"))
 
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button1"), 0)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button2"), 1)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button3"), 2)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button4"), 3)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button5"), 4)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button6"), 5)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button7"), 6)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("button8"), 7)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("leftButton"), 8)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rightButton"), 9)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rewindButton"), 10)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("fastFwdButton"), 11)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("loopButton"), 12)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("stopButton"), 13)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("playButton"), 14)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("recordButton"), 15)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary1"), 16)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary2"), 17)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary3"), 18)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary4"), 19)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary5"), 20)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary6"), 21)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary7"), 22)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("rotary8"), 23)
+	table.insert(g_item_index_to_sysex_item_id_map, get_item_index("masterFader"), 24)
+
 	send_debug("X-Toucher remote codec initialized")
 end
 
 function remote_release_from_use()
 	return {
-		make_sysex_text_message("{\"goodbye\":true}")
+		make_sysex_text_message("goodbye")
 	}
 end
+
