@@ -32,7 +32,7 @@ Use the MIDI in and out ports provided by the X-Touch Mini.
 
 ## Supported Devices
 
-The [current version 2.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v2.0.0) supports the
+The [current version 5.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v5.0.0) supports the
 following devices and rack extensions.
 
 ### Main Mixer
