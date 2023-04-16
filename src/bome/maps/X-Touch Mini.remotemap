@@ -1,0 +1,48 @@
+Propellerhead Remote Mapping File
+File Format Version	1.0.0
+Control Surface Manufacturer	Behringer
+Control Surface Model	X-Touch Mini
+Map Version	3.0.1
+
+// ---------------------- Combinator -----------
+
+Scope	Propellerheads	Combinator
+
+Define Group	Rotary Mode	Fine	Coarse
+
+//	CS Item	Key	Remotable Item	Scale	Mode	Groups
+
+Map	Layer A Button		Rotary Mode=Fine
+Map	Layer B Button		Rotary Mode=Coarse
+
+Map	Rotary 1		Rotary 1	5		Coarse
+Map	Rotary 1		Rotary 1	1		Fine
+Map	Rotary 2		Rotary 2	5		Coarse
+Map	Rotary 2		Rotary 2	1		Fine
+Map	Rotary 3		Rotary 3	5		Coarse
+Map	Rotary 3		Rotary 3	1		Fine
+Map	Rotary 4		Rotary 4	5		Coarse
+Map	Rotary 4		Rotary 4	1		Fine
+Map	Rotary 5		Rotary 5	5		Coarse
+Map	Rotary 5		Rotary 5	1		Fine
+Map	Rotary 6		Rotary 6	5		Coarse
+Map	Rotary 6		Rotary 6	1		Fine
+Map	Rotary 7		Rotary 7	5		Coarse
+Map	Rotary 7		Rotary 7	1		Fine
+Map	Rotary 8		Rotary 8	5		Coarse
+Map	Rotary 8		Rotary 8	1		Fine
+Map	Master Fader		Rotary 9
+Map	Button 1		Button 1
+Map	Button 2		Button 2
+Map	Button 3		Button 3
+Map	Button 4		Button 4
+Map	Button 5		Button 5
+Map	Button 6		Button 6
+Map	Button 7		Button 7
+Map	Button 8		Button 8
+
+// Buttons 9-12 and 13-16 act as radion buttons that control two additional rotaries
+// Requires Bome MIDI translator
+// Useful to switch between 4 settings on the Combinator, e.g. select instument
+Map	Quad Radio Switch 1		Rotary 10
+Map	Quad Radio Switch 2		Rotary 11
