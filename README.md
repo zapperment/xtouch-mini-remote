@@ -97,13 +97,50 @@ The documentation by Reason Studios about the mapping file format is also includ
 
 **Pull requests are welcome!**
 
-## Alternative Codec and Mapping
+## Alternative Codecs and Mappings
+
+There are two alternatives to the default codec and mapping, `bome` and `johansen`, which you can install by
+a corresponding argument to `install.sh`.
+
+### Bome
+
+![Screenshot of the XTQS Algoritm Combinator, powered by Bome](resources/images/bome-xtqs-algoritm.png)
+
+This codec can be used to turn the lower row of buttons into two radiobutton-style selector switches. To use it
+in Reason, add two additional rotary controls in addition to 8 for the encoders on the X-Touch and one for the
+X-Touch fader.
+
+Use this in combination with [Bome MIDI Translator Pro](https://www.bome.com/products/miditranslator) and the
+preset provided in the resources folder. This folder also contains a demo project and a Combinator skin.
+
+#### Installation
+
+To use the remote map and codecs for the Bome setup, run the [install.sh](install.sh) script on the
+command line, with the parameter `bome`:
+
+```shell
+./install.sh bome
+```
+
+Load the preset in the directory [resources/bome](resources/bome) into Bome MIDI Translator pro. Connect the
+MIDI port aliases for Reason input and output to the virtual ports that you're using to connect Reason.
+
+You can find various Combinator patches, skins and a demo Reason files in the resources directory. The demo
+contains a Combinator that lets you switch between 4 different Algoritms and 4 different reverbs independently.
+
+Note that you need these free Reason extensions for the demo to work:
+
+- [Aftermath Audio CV8X4 CV Generator](https://www.reasonstudios.com/shop/rack-extension/cv8x4-cv-generator/)
+- [LeNoteLiveSoftware Player Receive Notes](https://www.reasonstudios.com/shop/rack-extension/player-receive-notes/)
+
+
+### Johansen
 
 The original mapping and coded by Gulli Johansen, published
 on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in November 2019 are also included in
 this project.
 
-### Installation
+#### Installation
 
 To use the remote map and codecs by Gully Johansen in Reason, run the [install.sh](install.sh) script on the
 command line, with the parameter `johansen`:
@@ -112,7 +149,7 @@ command line, with the parameter `johansen`:
 ./install.sh johansen
 ```
 
-### Reason Studios Devices and Rack Extensions
+#### Reason Studios Devices and Rack Extensions
 
 The `johansen` mapping supports the following devices and rack extensions by Reason Studios:
 
@@ -143,7 +180,7 @@ The `johansen` mapping supports the following devices and rack extensions by Rea
 - Reason Studios COMP-01 Compressor/Limiter
 - Reason Studios PEQ-2 Two Band Parametric EQ
 
-### Third-party Rack Extensions
+#### Third-party Rack Extensions
 
 The `johansen` mapping supports the following rack extensions by third-party developers:
 
@@ -183,7 +220,7 @@ The `johansen` mapping supports the following rack extensions by third-party dev
 - Softube Reason Bass Amp
 - Softube Reason Amp
 - Softube FET Compressor
-- Softube Dynamite(Valley People
+- Softube Dynamite Valley People
 - Softube Tridemt A-Range EQ
 - Softube Saturation Knob
 - Flower Audio Loudness Meter
