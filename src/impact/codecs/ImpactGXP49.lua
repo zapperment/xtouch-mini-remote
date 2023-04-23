@@ -5,7 +5,6 @@
 release_tag = "20210507, build #139"
 gDisableDisplayUpdates = false
 RunSecondScan = true
-g_model_is_iX = true
 gSendShiftCCForGrab = false
 
 function remote_init(manufacturer, model)
@@ -2506,11 +2505,11 @@ function remote_process_midi(event)
             return true
         elseif ctrl >= ccTransClick and ctrl <= ccTransRec then
             if g_device ~= "Mixer" then
-                if not g_model_is_iX and (ctrl == ccTransRew or ctrl == ccTransFwd) then
-                    if ShiftMode then
-                        if value == 0 then
-                            return true
-                        end
+                if ShiftMode then
+                    if value == 0 then
+                        return true
+                    end
+                    if ctrl == ccTransLoop or ctrl == ccTransStop then
                         local spp = math.floor(remote.get_item_value(g_song_pos) / gBeatsPerBar + 0.5) * gBeatsPerBar
                         local msg = {
                             time_stamp = event.time_stamp,
@@ -2518,78 +2517,53 @@ function remote_process_midi(event)
                             value = spp
                         }
                         remote.handle_input(msg)
-                        local index = ctrl - ccTransRew + g_L_pos
+                        local index = g_L_pos
+                        if ctrl == ccTransStop then
+                            index = g_R_pos
+                        end
                         local msg = {
                             time_stamp = event.time_stamp,
                             item = index,
                             value = spp
                         }
                         remote.handle_input(msg)
-                        return true
+                    elseif ctrl == ccTransClick then
+                        local msg = {
+                            time_stamp = event.time_stamp,
+                            item = g_undo,
+                            value = 1
+                        }
+                        remote.handle_input(msg)
+                    elseif ctrl == ccTransRew then
+                        local msg = {
+                            time_stamp = event.time_stamp,
+                            item = g_goto_l,
+                            value = 1
+                        }
+                        remote.handle_input(msg)
+                    elseif ctrl == ccTransFwd then
+                        local msg = {
+                            time_stamp = event.time_stamp,
+                            item = g_goto_r,
+                            value = 1
+                        }
+                        remote.handle_input(msg)
+                    elseif ctrl == ccTransPlay then
+                        local msg = {
+                            time_stamp = event.time_stamp,
+                            item = g_pre_count,
+                            value = 1
+                        }
+                        remote.handle_input(msg)
+                    elseif ctrl == ccTransRec then
+                        local msg = {
+                            time_stamp = event.time_stamp,
+                            item = g_qrec,
+                            value = 1
+                        }
+                        remote.handle_input(msg)
                     end
-                end
-                if g_model_is_iX then
-                    if ShiftMode then
-                        if value == 0 then
-                            return true
-                        end
-                        if ctrl == ccTransLoop or ctrl == ccTransStop then
-                            local spp = math.floor(remote.get_item_value(g_song_pos) / gBeatsPerBar + 0.5) *
-                                            gBeatsPerBar
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_song_pos,
-                                value = spp
-                            }
-                            remote.handle_input(msg)
-                            local index = g_L_pos
-                            if ctrl == ccTransStop then
-                                index = g_R_pos
-                            end
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = index,
-                                value = spp
-                            }
-                            remote.handle_input(msg)
-                        elseif ctrl == ccTransClick then
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_undo,
-                                value = 1
-                            }
-                            remote.handle_input(msg)
-                        elseif ctrl == ccTransRew then
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_goto_l,
-                                value = 1
-                            }
-                            remote.handle_input(msg)
-                        elseif ctrl == ccTransFwd then
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_goto_r,
-                                value = 1
-                            }
-                            remote.handle_input(msg)
-                        elseif ctrl == ccTransPlay then
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_pre_count,
-                                value = 1
-                            }
-                            remote.handle_input(msg)
-                        elseif ctrl == ccTransRec then
-                            local msg = {
-                                time_stamp = event.time_stamp,
-                                item = g_qrec,
-                                value = 1
-                            }
-                            remote.handle_input(msg)
-                        end
-                        return true
-                    end
+                    return true
                 end
                 if ctrl == ccTransLoop and value > 0 then
                     if ShiftMode then
@@ -2650,13 +2624,11 @@ function remote_process_midi(event)
             return true
         end
         if g_device ~= "Mixer" then
-            if g_model_is_iX then
-                if ctrl == ccFader9 then
-                    ctrl = ccMixFader9
-                end
-                if ctrl == ccMixFader9 then
-                    ctrl = ccFader9
-                end
+            if ctrl == ccFader9 then
+                ctrl = ccMixFader9
+            end
+            if ctrl == ccMixFader9 then
+                ctrl = ccFader9
             end
             input_item = ctrl - ccFader1
             if ctrl >= ccFader1 and ctrl <= ccKnob8 then
@@ -2674,9 +2646,7 @@ function remote_process_midi(event)
                     end
                     return true
                 end
-                if g_model_is_iX and ctrl == ccFader9 then
-                    g_last_iX_fader_value = value
-                end
+                g_last_iX_fader_value = value
                 if drum_is_active then
                     if not grabbed_ctrls[input_item] then
                         local offset = gPadBank * kNumPads
@@ -2924,15 +2894,13 @@ function remote_set_state(changed_items)
                     if ctrl_item ~= g_last_ctrl or now_ms - g_last_input_time > 100 then
                         if now_ms - g_last_input_time > 100 then
                             ctrl_mutes[ctrl_item] = muted
-                            if g_model_is_iX then
-                                if ctrl_item == ctrl_targets[g_fader_last - g_fader_first] then
-                                    update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first],
-                                        g_last_iX_fader_value)
-                                    if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
-                                        sysEx_event = sysDisplaySoftTakeOverStatus(ctrl_targets[g_fader_last -
-                                                                                       g_fader_first])
-                                        gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
-                                    end
+                            if ctrl_item == ctrl_targets[g_fader_last - g_fader_first] then
+                                update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first],
+                                    g_last_iX_fader_value)
+                                if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
+                                    sysEx_event = sysDisplaySoftTakeOverStatus(
+                                        ctrl_targets[g_fader_last - g_fader_first])
+                                    gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
                                 end
                             end
                         end
@@ -3042,13 +3010,11 @@ function remote_set_state(changed_items)
                         ctrl_targets[item_index - g_fader_first] = remote.get_item_value(item_index)
                     end
                     ctrl_mutes[ctrl_targets[item_index - g_fader_first]] = muted
-                    if g_model_is_iX then
-                        if item_index == g_fader_last then
-                            update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first], g_last_iX_fader_value)
-                            if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
-                                sysEx_event = sysDisplaySoftTakeOverStatus(ctrl_targets[g_fader_last - g_fader_first])
-                                gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
-                            end
+                    if item_index == g_fader_last then
+                        update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first], g_last_iX_fader_value)
+                        if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
+                            sysEx_event = sysDisplaySoftTakeOverStatus(ctrl_targets[g_fader_last - g_fader_first])
+                            gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
                         end
                     end
                 else
@@ -3076,12 +3042,10 @@ function remote_set_state(changed_items)
                     end
                 end
                 mute_all_ctrls()
-                if g_model_is_iX then
-                    update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first], g_last_iX_fader_value)
-                    if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
-                        sysEx_event = sysDisplaySoftTakeOverStatus(ctrl_targets[g_fader_last - g_fader_first])
-                        gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
-                    end
+                update_ctrl_mutes(ch16, ctrl_targets[g_fader_last - g_fader_first], g_last_iX_fader_value)
+                if ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]] ~= gLastMuteStatus then
+                    sysEx_event = sysDisplaySoftTakeOverStatus(ctrl_targets[g_fader_last - g_fader_first])
+                    gLastMuteStatus = ctrl_mutes[ctrl_targets[g_fader_last - g_fader_first]]
                 end
             elseif item_index == g_device_name then
                 if remote.is_item_enabled(item_index) then
