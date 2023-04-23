@@ -1,0 +1,28 @@
+version={1,0,0}
+
+
+
+function remote_supported_control_surfaces()
+
+	local surfaces =
+
+	{
+
+		{ manufacturer="Nektar", model="Impact GXP49",
+
+			source="ImpactGXP49.lua", picture="ImpactGXP49.png",
+
+			in_ports={ {description="Controls In Port"},
+				{description="Keyboard Port", optional=true} },
+				
+			out_ports={{description="Out Port"} },
+
+			has_keyboard=true,				
+		
+		},
+	}
+
+	return surfaces
+
+end
+
