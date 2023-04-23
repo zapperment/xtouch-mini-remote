@@ -6,7 +6,6 @@ release_tag = "20210507, build #139"
 gDisableDisplayUpdates = false
 RunSecondScan = true
 g_model_is_iX = true
-g_model_is_lxmini = false
 gSendShiftCCForGrab = false
 
 function remote_init(manufacturer, model)
@@ -1823,12 +1822,6 @@ function remote_release_from_use()
         table.insert(retEvents, g_scenes_led_status_msg)
         table.insert(retEvents, g_default_led_status_msg)
         table.insert(retEvents, g_user_led_status_msg)
-        if (not g_model_is_iX or g_model_is_lxmini) then
-            local sysEx_event = set_pads_sal_mode(k_off)
-            if sysEx_event then
-                table.insert(retEvents, sysEx_event)
-            end
-        end
         local sysEx_event1 = sysStartup(glob_elm.usb_set, 0)
         if sysEx_event1 then
             table.insert(retEvents, sysEx_event1)
@@ -2098,16 +2091,10 @@ function remote_process_midi(event)
             if gPadMode == pd_scenes then
                 gPadMode = pd_notes
                 resetPadColor()
-                if (not g_model_is_iX or g_model_is_lxmini) and not drum_is_active then
-                    sysEx_event = set_pads_sal_mode(k_off)
-                end
             else
                 calculate_beats_per_bar()
                 resetPadColor()
                 gPadMode = pd_scenes;
-                if (not g_model_is_iX or g_model_is_lxmini) and not g_pads_in_sal_mode then
-                    sysEx_event = set_pads_sal_mode(k_on)
-                end
                 if not g_loop_values[0] or g_loop_values[0][0] == g_loop_values[0][1] then
                     initialize_loop_presets()
                 else
@@ -2392,9 +2379,6 @@ function remote_process_midi(event)
     g_last_input_time = remote.get_time_ms()
     g_last_status = status
     if status == ch16 then
-        if (not g_model_is_iX or g_model_is_lxmini) and ctrl == ccUserMode and value > 0 then
-            mute_all_ctrls()
-        end
         if ctrl == ccDefaultUser then
             if g_device ~= "Mixer" and value > 0 then
                 if gInstrumentMode then
@@ -3106,24 +3090,15 @@ function remote_set_state(changed_items)
                     gPadBank = 0
                     if mode == 3 then
                         drum_is_active = true
-                        if (not g_model_is_iX or g_model_is_lxmini) and not g_pads_in_sal_mode then
-                            sysEx_event = set_pads_sal_mode(k_on)
-                        end
                     else
                         drum_is_active = false
                         if g_pads_in_sal_mode and gPadMode ~= pd_scenes then
                             gPadMode = pd_notes
                         end
-                        if (not g_model_is_iX or g_model_is_lxmini) and g_pads_in_sal_mode then
-                            sysEx_event = set_pads_sal_mode(k_off)
-                        end
                     end
                 else
                     gActiveMapping = false;
                     drum_is_active = false
-                    if (not g_model_is_iX or g_model_is_lxmini) and g_pads_in_sal_mode and gPadMode ~= pd_scenes then
-                        sysEx_event = set_pads_sal_mode(k_off)
-                    end
                 end
             elseif item_index == g_default then
                 g_update_page_mappings = remote.get_time_ms()
@@ -3174,9 +3149,6 @@ function remote_deliver_midi()
             sysEx_event = sysDevInquiry()
             gm_dev_inquiry_sent = true
         else
-            if (not g_model_is_iX or g_model_is_lxmini) and drum_is_active then
-                sysEx_event = set_pads_sal_mode(k_on)
-            end
             startup = false
         end
     end
