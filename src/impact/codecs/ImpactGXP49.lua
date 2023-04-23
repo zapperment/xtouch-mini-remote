@@ -5,7 +5,6 @@
 release_tag = "20210507, build #139"
 gDisableDisplayUpdates = false
 RunSecondScan = true
-g_model_is_88 = false
 g_model_is_25 = false
 g_model_is_iX = true
 g_model_is_lxmini = false
@@ -1368,51 +1367,6 @@ local function sysSetPadColor(update_all)
     end
 end
 
-local function sysSetButtonLedColor(update_all)
-    if not g_model_is_88 then
-        return nil
-    end
-    local ref_table = {}
-    start = 0
-    stop = hdr_sz
-    for i = start, stop do
-        ref_table[i] = hdr[i]
-    end
-    table.insert(ref_table, cmd.set)
-    table.insert(ref_table, tgt.display)
-    table.insert(ref_table, idx.ledBtns)
-    local found_something_to_update = false
-    for i = 0, kNumPads - 1 do
-        if led_button_colors[i] and (update_all or (led_button_colors[i] ~= led_button_colors_last[i])) then
-            table.insert(ref_table, 0)
-            table.insert(ref_table, i + 1)
-            table.insert(ref_table, 1)
-            table.insert(ref_table, led_button_colors[i])
-            led_button_colors_last[i] = led_button_colors[i]
-            found_something_to_update = true
-        end
-    end
-    local checksum = 0
-    stop = table.getn(ref_table) - hdr_sz
-    for i = start, stop do
-        checksum = checksum + ref_table[i + hdr_sz]
-        if checksum > 127 then
-            checksum = checksum - 128
-        end
-    end
-    checksum = 128 - checksum
-    if checksum == 128 then
-        checksum = 0
-    end
-    table.insert(ref_table, checksum)
-    table.insert(ref_table, 247)
-    if found_something_to_update then
-        return ref_table
-    else
-        return nil
-    end
-end
-
 local function midiCCvalue(ch, d1, d2)
     local ref_table = {}
     table.insert(ref_table, 176 + ch - 1)
@@ -2518,9 +2472,6 @@ function remote_process_midi(event)
             end
             if ctrl == ccMixerMode then
                 gMixerMode = true
-                if g_device == "Mixer" and g_model_is_88 then
-                    sysSetButtonLedColor(true)
-                end
             else
                 gMixerMode = false
             end
@@ -3469,13 +3420,6 @@ function remote_deliver_midi()
                 end
             end
             if g_update_led_button_colors and not ret_events[0] then
-                if g_model_is_88 then
-                    if g_update_led_button_colors > 1 then
-                        sysEx_event = sysSetButtonLedColor(true)
-                    else
-                        sysEx_event = sysSetButtonLedColor()
-                    end
-                end
                 if sysEx_event then
                     table.insert(ret_events, sysEx_event)
                     sysEx_event = nil
