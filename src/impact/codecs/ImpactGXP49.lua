@@ -5,7 +5,6 @@
 release_tag = "20210507, build #139"
 gDisableDisplayUpdates = false
 RunSecondScan = true
-g_model_is_25 = false
 g_model_is_iX = true
 g_model_is_lxmini = false
 gSendShiftCCForGrab = false
@@ -2667,19 +2666,6 @@ function remote_process_midi(event)
             return true
         end
         if g_device ~= "Mixer" then
-            if g_model_is_25 then
-                if ctrl >= ccFader1 and ctrl <= ccFader8 then
-                    local mute_ctrl = ctrl_targets[(ccKnob1 - ccFader1) + (ctrl - ccFader1)]
-                    if mute_ctrl then
-                        ctrl_mutes[mute_ctrl] = muted
-                    end
-                elseif ctrl >= ccKnob1 and ctrl <= ccKnob8 then
-                    local mute_ctrl = ctrl_targets[ctrl - ccKnob1]
-                    if mute_ctrl then
-                        ctrl_mutes[mute_ctrl] = muted
-                    end
-                end
-            end
             if g_model_is_iX then
                 if ctrl == ccFader9 then
                     ctrl = ccMixFader9
@@ -2844,51 +2830,14 @@ function remote_process_midi(event)
                 remote.handle_input(msg)
                 return true
             elseif ctrl >= ccMixFader1 and ctrl <= ccMixKnob8 then
-                if g_model_is_25 then
-                    local ix = -1
-                    if ctrl >= ccMixFader1 and ctrl <= ccMixFader8 then
-                        ix = ctrl - ccMixFader1
-                    elseif ctrl >= ccMixKnob1 and ctrl <= ccMixKnob8 then
-                        ix = ctrl - ccMixKnob1
-                    end
-                    if ix >= 0 then
-                        ctrl = ctrl_targets[ix]
-                        if ctrl then
-                            ctrl_mutes[ctrl] = muted
-                        end
-                        ctrl = ctrl_targets[ix + (ccMixKnob1 - ccMixFader1)]
-                        if ctrl then
-                            ctrl_mutes[ctrl] = muted
-                        end
-                    else
-                        ctrl = ctrl_targets[ctrl - ccMixFader1]
-                        if ctrl then
-                            ctrl_mutes[ctrl] = muted
-                        end
-                    end
-                else
-                    ctrl = ctrl_targets[ctrl - ccMixFader1]
-                    if ctrl then
-                        ctrl_mutes[ctrl] = muted
-                    end
+                ctrl = ctrl_targets[ctrl - ccMixFader1]
+                if ctrl then
+                    ctrl_mutes[ctrl] = muted
                 end
                 return true
             end
         end
         if g_device == "Mixer" then
-            if g_model_is_25 then
-                if ctrl >= ccMixFader1 and ctrl <= ccMixFader8 then
-                    local mute_ctrl = (ccMixKnob1 - ccMixFader1) + (ctrl - ccMixFader1)
-                    if mute_ctrl then
-                        ctrl_mutes[mute_ctrl] = muted
-                    end
-                elseif ctrl >= ccMixKnob1 and ctrl <= ccMixKnob8 then
-                    local mute_ctrl = ctrl - ccMixKnob1
-                    if mute_ctrl then
-                        ctrl_mutes[mute_ctrl] = muted
-                    end
-                end
-            end
             if ctrl == ccMixButton9 then
                 mute_all_ctrls()
             end
@@ -2953,24 +2902,8 @@ function remote_process_midi(event)
                 remote.handle_input(msg)
                 return true
             elseif ctrl >= ccFader1 and ctrl <= ccKnob8 then
-                if g_model_is_25 then
-                    local ix = -1
-                    if ctrl >= ccFader1 and ctrl <= ccFader8 then
-                        ix = ctrl - ccFader1
-                    elseif ctrl >= ccKnob1 and ctrl <= ccKnob8 then
-                        ix = ctrl - ccKnob1
-                    end
-                    if ix >= 0 then
-                        ctrl_mutes[ix] = muted
-                        ctrl_mutes[ix + (ccKnob1 - ccFader1)] = muted
-                    else
-                        ctrl = ctrl - ccFader1
-                        ctrl_mutes[ctrl] = muted
-                    end
-                else
-                    ctrl = ctrl - ccFader1
-                    ctrl_mutes[ctrl] = muted
-                end
+                ctrl = ctrl - ccFader1
+                ctrl_mutes[ctrl] = muted
                 return true
             else
                 return true
