@@ -129,13 +129,22 @@ function remote_init(manufacturer, model)
     for i = 0, 127 do
 
         local item_name = "MIDI CC " .. i
+        local min = 0
+        local max = 127
+
+        if i == 2 then
+            item_name = "Breath Switch"
+            min = 0
+            max = 1
+        end
+
 
         table.insert(items, {
             name = item_name,
             input = "value",
             output = "value",
-            min = 0,
-            max = 127
+            min = min,
+            max = max
         })
 
     end
@@ -713,7 +722,7 @@ function remote_init(manufacturer, model)
         name = "MIDI CC 1"
     }, {
         pattern = "b? 02 xx",
-        name = "MIDI CC 2"
+        name = "Breath Switch"
     }, {
         pattern = "b? 03 xx",
         name = "MIDI CC 3"
