@@ -7,6 +7,27 @@ gDisableDisplayUpdates = false
 RunSecondScan = true
 gSendShiftCCForGrab = false
 
+function table_to_string(tbl, indent)
+    if not indent then
+        indent = 0
+    end
+    local str = ""
+
+    for k, v in pairs(tbl) do
+        local formatting = string.rep("  ", indent) .. k .. ": "
+
+        if type(v) == "table" then
+            str = str .. formatting .. "{\n"
+            str = str .. table_to_string(v, indent + 1)
+            str = str .. string.rep("  ", indent) .. "}\n"
+        else
+            str = str .. formatting .. tostring(v) .. "\n"
+        end
+    end
+
+    return str
+end
+
 function remote_init(manufacturer, model)
 
     g_keyboard_port = 2
@@ -17,7 +38,6 @@ function remote_init(manufacturer, model)
     g_num_knobs = 8
     g_fader_max = 127
     g_max_num_groups = 128
-    kNumMixChannels = 8
     g_max_num_steps = 16
 
     ccS1 = ccMixerMode
@@ -1671,11 +1691,14 @@ local function clear_grab()
     g_last_ctrl_grab = nil
 end
 
+-- this sets ctrl_targets to that ctrl_targets[8] is 103
+-- when a Complex-1 is currently selected
 local function set_parameter_targets_on_track_change()
     clear_grab()
     device_maps[gLastDeviceName] = {}
     device_grabbed_user[gLastDeviceName] = {}
     device_grabbed_default[gLastDeviceName] = {}
+    -- ctrl_targets has 25 items when Reason starts at this point
     for i = 0, table.getn(ctrl_targets) do
         device_maps[gLastDeviceName][i] = ctrl_targets[i]
     end
@@ -1686,6 +1709,7 @@ local function set_parameter_targets_on_track_change()
         device_grabbed_user[gLastDeviceName][i] = grabbed_user[i]
     end
     clear_array(ctrl_targets)
+    -- ctrl_targets still has 25 items when Reason starts at this point
     null_array(grabbed_user)
     null_array(grabbed_ctrls)
     if device_maps[remote.get_item_text_value(g_device_name)] then
@@ -1699,14 +1723,18 @@ local function set_parameter_targets_on_track_change()
             end
         end
     else
+        -- we get into this branch when Reason starts
         local stop = g_knob_last - g_fader_first
         for i = 0, stop do
+            -- g_fader_first is 6419
             if remote.is_item_enabled(g_fader_first + i) then
                 ctrl_targets[i] = remote.get_item_value(g_fader_first + i)
             end
         end
     end
     gLastDeviceName = remote.get_item_text_value(g_device_name)
+    -- g_device_name is 6605
+    -- gLastDeviceName is "Complex"
 end
 
 function remote_probe(manufacturer, model, prober)
@@ -1881,7 +1909,11 @@ set_modifier_1 = nil
 set_modifier_2 = nil
 ccMixFader1 = 12
 ccMixFader8 = 19
+
+-- This is probably the potentiometer:
+-- Control change #20
 ccMixFader9 = 20
+
 ccMixButton1 = 21
 ccMixButton9 = 29
 ccMixKnob1 = 30
@@ -1997,10 +2029,22 @@ local function isLooping()
     end
 end
 
+-- This function is called for each incoming MIDI event. This is where the codec interprets
+-- the message and translates it into a Remote message. The translated message is then
+-- passed back to Remote with a call to remote.handle_input(). If the event was translated
+-- and handled this function should return true, to indicate that the event was used. If the
+-- function returns false, Remote will try to find a match using the automatic input registry
+-- defined with remote.define_auto_inputs().
 function remote_process_midi(event)
+    -- first byte of MIDI message: event type + MIDI channel
     local status = event[1]
+
+    -- second byte of MIDI message: controller number (for CC messages)
     local ctrl = event[2]
+
+    -- third byte of MIDI message: value
     local value = event[3]
+
     if status == sysex then
         if g_codec_disabled then
             if event[6] == 0 and event[7] == 1 and event[8] == 119 then
@@ -2377,7 +2421,14 @@ function remote_process_midi(event)
     local input_item
     g_last_input_time = remote.get_time_ms()
     g_last_status = status
+
+    -- ch16 is 191, #BF: status byte of control change (CC)
+    -- message on channel 16; this can be a potentiometer
+    -- message
     if status == ch16 then
+
+        -- this condition is false when twisting the potentiometer,
+        -- we can ignore this block
         if ctrl == ccDefaultUser then
             if g_device ~= "Mixer" and value > 0 then
                 if gInstrumentMode then
@@ -2404,6 +2455,9 @@ function remote_process_midi(event)
                 end
             end
         end
+
+        -- this condition is false when twisting the potentiometer,
+        -- we can ignore this block
         if ctrl == ccS1 or ctrl == ccS2 or ctrl == ccS3 then
             if value == 0 then
                 return true
@@ -2425,6 +2479,9 @@ function remote_process_midi(event)
             remote.handle_input(msg)
             return true
         end
+
+        -- this condition is false when twisting the potentiometer,
+        -- we can ignore this block
         if ctrl == ccMixerMode or ctrl == ccInstMode or ctrl == ccUserMode then
             if g_device ~= "Mixer" then
                 if ShiftMode then
@@ -2458,6 +2515,9 @@ function remote_process_midi(event)
                 gMixerMode = false
             end
         end
+
+        -- this condition is false when twisting the potentiometer,
+        -- we can ignore this block
         if ctrl == ccShift then
             if value > 0 then
                 local now_ms = remote.get_time_ms()
@@ -2491,6 +2551,9 @@ function remote_process_midi(event)
             end
             return true
         end
+
+        -- this condition is false when twisting the potentiometer,
+        -- we can ignore this block
         if ctrl > ccShift and ctrl <= ccPatchUp then
             if g_device ~= "Mixer" then
                 if value > 0 then
@@ -2503,6 +2566,9 @@ function remote_process_midi(event)
                 end
             end
             return true
+
+            -- this condition is false when twising the potentiometer,
+            -- we can ignore this block
         elseif ctrl >= ccTransClick and ctrl <= ccTransRec then
             if g_device ~= "Mixer" then
                 if ShiftMode then
@@ -2623,19 +2689,43 @@ function remote_process_midi(event)
             end
             return true
         end
+
+        -- When twisting the potentiometer on a rack device like Complex-1
+        -- this condition is true, g_device is not equal to "Mixer"
         if g_device ~= "Mixer" then
+
+            -- This seems to be a bug: if ctrl is ccFader9,
+            -- sets it to ccMixFader9, then sets it back to
+            -- ccFader9 directly after, because it's using
+            -- "if", not "elseif"
             if ctrl == ccFader9 then
                 ctrl = ccMixFader9
             end
             if ctrl == ccMixFader9 then
+                -- setting ctrl to CC #46
                 ctrl = ccFader9
             end
+            -- When twisting the potentiometer, at this point, ctrl was
+            -- changed from 20 to 46, who knows why...
+
             input_item = ctrl - ccFader1
+            -- ccFader1 is 38; when twisting the potentiometer,
+            -- input_item is 46 - 38 = 8
+
             if ctrl >= ccFader1 and ctrl <= ccKnob8 then
+                -- ccFader1 is 38 and ccKnob8 is 63, 46 is in between,
+                -- so we get here when twising the potentiometer
+
+                -- no idea what this does, probably for some other
+                -- device than Impact GXP49
                 if not g_last_default_user_led_status then
                     setDefaultUserLEDStatus(k_on)
                 end
+
+                -- this condition is false when twising the potentiometer,
+                -- we can ignore this block
                 if ctrl_grab[1] and input_item ~= g_last_ctrl_grab then
+                    echo("grab da ctrl")
                     ctrl_targets[input_item] = ctrl_grab[1]
                     table.remove(ctrl_grab, 1)
                     g_last_ctrl_grab = input_item
@@ -2646,7 +2736,13 @@ function remote_process_midi(event)
                     end
                     return true
                 end
+
+                -- storing the value of the incoming MIDI message, i.e.
+                -- the new potentiometer value, for later use
                 g_last_iX_fader_value = value
+
+                -- this condition is false when twising the potentiometer,
+                -- we can ignore this block
                 if drum_is_active then
                     if not grabbed_ctrls[input_item] then
                         local offset = gPadBank * kNumPads
@@ -2702,6 +2798,9 @@ function remote_process_midi(event)
                         end
                     end
                 end
+
+                -- ccButton1 is 47, potentiometer is CC 46, so the
+                -- condition is false and the block can be ignored
                 if ctrl >= ccButton1 and ctrl <= ccButton9 then
                     if not grabbed_ctrls[input_item] then
                         local mode = remote.get_item_mode(g_button_first + ctrl - ccButton1)
@@ -2733,14 +2832,24 @@ function remote_process_midi(event)
                         end
                     end
                 end
+
+                -- input_item is 8;
+                -- ctrl is set to 103 here
                 ctrl = ctrl_targets[input_item]
+
+                -- When twisting the potentiometer, this condition will be false
                 if not ctrl then
                     return true
                 end
                 if ctrl_mutes[ctrl] then
+                    -- surprisingly, when twisting the potentiometer,
+                    -- we get here, not sure if ctrl_mutes is at all relevant
                     update_ctrl_mutes(status, ctrl, value)
                 end
                 if event[2] < ccButton1 or event[2] > ccButton9 then
+                    -- when twisting the potentiometer, we get here;
+                    -- this part seems to be for setting the lights left and right of
+                    -- the potentiometer
                     if ctrl_mutes[ctrl] then
                         if ctrl_mutes[ctrl] ~= gLastMuteStatus or ctrl ~= g_last_ctrl then
                             if (gActiveMapping) then
@@ -2756,8 +2865,17 @@ function remote_process_midi(event)
                         end
                     end
                 end
+
+                -- saving ctrl (103) for later
                 g_last_ctrl = ctrl
+
+                -- g_inst_ctrl_first is 8
+                -- ctrl is 103
                 local item_index = g_inst_ctrl_first + ctrl
+                -- when twisting the potentiometer, item_index is 111
+
+                -- this condition is false when twising the potentiometer,
+                -- we can ignore this block
                 if input_item + g_fader_first >= g_button_first and input_item + g_fader_first <= g_button_last then
                     if remote.get_item_mode(g_inst_ctrl_first + ctrl) == 2 then
                         local msg = {
@@ -2776,12 +2894,24 @@ function remote_process_midi(event)
                         end
                     end
                 end
+
+                -- example msg generated when twisting the potentiometer:
+                -- value: 100
+                -- time_stamp: { hi: 82, lo: 1080958854 }
+                -- item: 111
                 local msg = {
                     time_stamp = event.time_stamp,
                     item = item_index,
                     value = value
                 }
+
+                -- This function should be called to let the Remote host handle translated input messages.
+                -- msg is a Remote message; a table containing the following fields:
+                -- item – the index of the control surface item sending the message
+                -- value – the value of the message
+                -- time_stamp – the time-stamp of the message (copy from the MIDI event)
                 remote.handle_input(msg)
+
                 return true
             elseif ctrl >= ccMixFader1 and ctrl <= ccMixKnob8 then
                 ctrl = ctrl_targets[ctrl - ccMixFader1]
