@@ -60,11 +60,6 @@ Map	Channel Pressure		Channel Pressure
 // ---------------------- Combinator -----------
 
 Scope	Propellerheads	Combinator
-//Define Group	Mode	Instrument	Mixer	Transport	Channel
-//Define Group	page	pg	pg_user
-
-//Map	Default		page=pg
-//Map	User		page=pg_user
 
 Map	Device		"Combinator"
 
