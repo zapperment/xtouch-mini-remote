@@ -13,7 +13,7 @@ on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in Nov
 
 Download the most recent version here: 
 
-* [Version 5.0.0](https://github.com/zapperment/xtouch-mini-remote/archive/v5.0.0.zip)
+* [Version 6.0.0](https://github.com/zapperment/xtouch-mini-remote/archive/v6.0.0.zip)
 
 To use the remote map and codecs in Reason, run the [install.sh](install.sh) script on the command line:
 
@@ -32,7 +32,7 @@ Use the MIDI in and out ports provided by the X-Touch Mini.
 
 ## Supported Devices
 
-The [current version 5.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v5.0.0) supports the
+The [current version 6.0.0](https://github.com/zapperment/xtouch-mini-remote/releases/tag/v6.0.0) supports the
 following devices and rack extensions.
 
 ### Main Mixer
