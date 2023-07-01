@@ -75,17 +75,21 @@ function remote_init()
 		end
 	end
 
-	------------------------------------------------- Triple radio switch ------------------------------------------------
+	------------------------------------------------- Radio switches ------------------------------------------------
 
 	local function define_quad_radio_switches()
-			local item_name_1 = "Quad Radio Switch 1"
-			table.insert(items, { name = item_name_1, input = "value", output = "value", min = 0, max = 127 })
-			table.insert(auto_inputs, { name = item_name_1, pattern = "b0 38 xx" })
-			table.insert(auto_outputs, { name = item_name_1, pattern = "b0 38 xx" })
-			local item_name_2 = "Quad Radio Switch 2"
-			table.insert(items, { name = item_name_2, input = "value", output = "value", min = 0, max = 127 })
-			table.insert(auto_inputs, { name = item_name_2, pattern = "b0 39 xx" })
-			table.insert(auto_outputs, { name = item_name_2, pattern = "b0 39 xx" })
+		local item_name_1 = "Quad Radio Switch 1"
+		table.insert(items, { name = item_name_1, input = "value", output = "value", min = 0, max = 127 })
+		table.insert(auto_inputs, { name = item_name_1, pattern = "b0 38 xx" })
+		table.insert(auto_outputs, { name = item_name_1, pattern = "b0 38 xx" })
+		local item_name_2 = "Quad Radio Switch 2"
+		table.insert(items, { name = item_name_2, input = "value", output = "value", min = 0, max = 127 })
+		table.insert(auto_inputs, { name = item_name_2, pattern = "b0 39 xx" })
+		table.insert(auto_outputs, { name = item_name_2, pattern = "b0 39 xx" })
+		local item_name_3 = "Octo Radio Switch"
+		table.insert(items, { name = item_name_3, input = "value", output = "value", min = 0, max = 127 })
+		table.insert(auto_inputs, { name = item_name_3, pattern = "b0 3A xx" })
+		table.insert(auto_outputs, { name = item_name_3, pattern = "b0 3A xx" })
 	end
 
 	------------------------------------------------------------

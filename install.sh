@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 
 function echo_red() {
   echo -e "\033[1;31m$1\033[0m"
@@ -8,27 +8,45 @@ function echo_bold() {
   echo -e "\033[1m$1\033[0m"
 }
 
-echo "$(uname)"
+OS_NAME="$(uname)"
 
-if [ ! "$(uname)" == "Darwin" ]; then
-  echo "Detected Windows" 
-  REMOTE_DIR="/c/ProgramData/Propellerhead Software/Remote"
-else
-  echo "Detected macOS" 
+if [[ "${OS_NAME}" == "Darwin" ]]; then
+  echo "Detected macOS"
   USER_NAME=$(scutil <<<"show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
   REMOTE_DIR="/Users/${USER_NAME}/Library/Application Support/Propellerhead Software/Remote"
+elif [[ "${OS_NAME}" == MINGW* ]] || [[ "${OS_NAME}" == MSYS* ]] || [[ "${OS_NAME}" == "Windows_NT" ]]; then
+  echo "Detected Windows"
+  REMOTE_DIR="/c/ProgramData/Propellerhead Software/Remote"
+else
+  echo_red "Unsupported OS"
+  exit 1
 fi
 
-if [ ! $1 ]; then
+if [ -z "$1" ]; then
   echo_bold "Using default configuration (main)"
   CONFIG="main"
 else
-  echo_bold "Using configuration '$1'"
   CONFIG="$1"
 fi
 
-echo ""
+# Validate the CONFIG value
+VALID_CONFIGS=("bome" "impact" "impact-original" "johansen" "main" "reason11")
 
+if ! printf '%s\n' "${VALID_CONFIGS[@]}" | grep -q -P "^${CONFIG}$"; then
+  echo_red "Error: Invalid configuration '${CONFIG}'. Valid configurations are: ${VALID_CONFIGS[*]}"
+  exit 1
+else
+  echo_bold "Using configuration '${CONFIG}'"
+fi
+
+# Set VENDOR variable based on CONFIG
+if [[ "${CONFIG}" == "impact" ]] || [[ "${CONFIG}" == "impact-original" ]]; then
+    VENDOR="Nektar"
+else
+    VENDOR="Behringer"
+fi
+
+echo ""
 
 if [ ! -d "${REMOTE_DIR}" ]; then
   echo_red "Error – no Reason!"
@@ -42,7 +60,7 @@ fi
 
 echo ""
 
-CODECS_TARGET_DIR="${REMOTE_DIR}/Codecs/Lua Codecs/Behringer"
+CODECS_TARGET_DIR="${REMOTE_DIR}/Codecs/Lua Codecs/${VENDOR}"
 
 if [ ! -d "${CODECS_TARGET_DIR}" ]; then
   echo_bold "Creating codecs dir:"
@@ -55,7 +73,7 @@ fi
 
 echo ""
 
-MAPS_TARGET_DIR="${REMOTE_DIR}/Maps/Behringer"
+MAPS_TARGET_DIR="${REMOTE_DIR}/Maps/${VENDOR}"
 
 if [ ! -d "${MAPS_TARGET_DIR}" ]; then
   echo_bold "Creating maps dir:"
@@ -77,3 +95,4 @@ echo_bold "Copying files:"
 
 cp -v "${CODECS_SOURCE_DIR}/"* "${CODECS_TARGET_DIR}/"
 cp -v "${MAPS_SOURCE_DIR}/"* "${MAPS_TARGET_DIR}/"
+
