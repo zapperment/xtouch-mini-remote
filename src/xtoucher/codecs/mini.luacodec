@@ -1,0 +1,11 @@
+version = { 3, 0, 1 }
+
+function remote_supported_control_surfaces()
+	local surfaces = {
+		{ manufacturer = "Behringer", model = "X-Touch Mini",
+		  source = "mini.lua", picture = "xtouchmini.png",
+		  in_ports = { { description = "Input" } }, out_ports = { { description = "Output" } },
+		  setup_info_text = "X-Touch Mini" },
+	}
+	return surfaces
+end
