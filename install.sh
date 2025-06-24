@@ -24,7 +24,7 @@ fi
 
 if [ -z "$1" ]; then
   echo_bold "Using default configuration (main)"
-  CONFIG="main"
+  CONFIG="reason11"
 else
   CONFIG="$1"
 fi
