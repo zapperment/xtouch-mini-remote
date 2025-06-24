@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 
 function echo_red() {
   echo -e "\033[1;31m$1\033[0m"
@@ -32,7 +32,7 @@ fi
 # Validate the CONFIG value
 VALID_CONFIGS=("bome" "impact" "impact-original" "johansen" "main" "reason11")
 
-if ! printf '%s\n' "${VALID_CONFIGS[@]}" | grep -q -P "^${CONFIG}$"; then
+if ! printf '%s\n' "${VALID_CONFIGS[@]}" | grep -q -E "^${CONFIG}$"; then
   echo_red "Error: Invalid configuration '${CONFIG}'. Valid configurations are: ${VALID_CONFIGS[*]}"
   exit 1
 else
