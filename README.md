@@ -11,9 +11,9 @@ on [reasontalk.com](https://forum.reasontalk.com/viewtopic.php?t=7514815) in Nov
 
 ## Installation
 
-Download the most recent version here: 
+Download the most recent version here:
 
-* [Version 6.0.0](https://github.com/zapperment/xtouch-mini-remote/archive/v6.0.0.zip)
+- [Version 7.0.0](https://github.com/zapperment/xtouch-mini-remote/archive/v7.0.0.zip)
 
 To use the remote map and codecs in Reason, run the [install.sh](install.sh) script on the command line:
 
@@ -24,7 +24,7 @@ Reason can use them.
 
 After successful installation, restart Reason and select the Behringer X-Touch Mini control surface:
 
-* Preferences → Control Surfaces → Add manually → Manufacturer: Behringer → Model: X-Touch Mini
+- Preferences → Control Surfaces → Add manually → Manufacturer: Behringer → Model: X-Touch Mini
 
 Use the MIDI in and out ports provided by the X-Touch Mini.
 
@@ -67,22 +67,22 @@ know what each of the controls on the X-Touch Mini are called in the mappings.
 
 ![Screenshot: Control names](resources/images/control-names.png)
 
-* The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
+- The encoder knobs are named `Rotary 1`, `Rotary 2`, (…) `Rotary 8` (MIDI events generated when you twist one of
   the encoders)
-* The encoder buttons are named `Rotary Button 1`, `Rotary Button 2`, (…) `Rotary Button 8` (MIDI events
+- The encoder buttons are named `Rotary Button 1`, `Rotary Button 2`, (…) `Rotary Button 8` (MIDI events
   generated when you press down on one of the encoders)
-* The upper row buttons are named `Button 1`, `Button 2`, (…) `Button 8`
-* The lower row buttons are named:
-    * `Left Button`
-    * `Right Button`
-    * `Rewind Button`
-    * `Fast Fwd Button`
-    * `Loop Button`
-    * `Stop Button`
-    * `Play Button`
-    * `Record Button`
-* The master fader is (surprisingly) named `Master Fader`
-* The buttons for selecting layers are named `Layer A Button` and `Layer B Button`
+- The upper row buttons are named `Button 1`, `Button 2`, (…) `Button 8`
+- The lower row buttons are named:
+  - `Left Button`
+  - `Right Button`
+  - `Rewind Button`
+  - `Fast Fwd Button`
+  - `Loop Button`
+  - `Stop Button`
+  - `Play Button`
+  - `Record Button`
+- The master fader is (surprisingly) named `Master Fader`
+- The buttons for selecting layers are named `Layer A Button` and `Layer B Button`
 
 Take a look at how the existing mapping file is set up:
 
@@ -129,7 +129,6 @@ Note that you need these free Reason extensions for the demo to work:
 
 - [Aftermath Audio CV8X4 CV Generator](https://www.reasonstudios.com/shop/rack-extension/cv8x4-cv-generator/)
 - [LeNoteLiveSoftware Player Receive Notes](https://www.reasonstudios.com/shop/rack-extension/player-receive-notes/)
-
 
 ### Johansen
 
@@ -262,4 +261,3 @@ The `johansen` mapping supports the following rack extensions by third-party dev
 - Red Rock Sound Re 200
 - Red Rock Sound Re 302
 - Red Rock Sound. Orchesteral Hall Reverb
-
